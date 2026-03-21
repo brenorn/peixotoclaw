@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+@theme {
+  --color-peixoto-primary: #ff4d4d;
+  --color-peixoto-secondary: #ff7675;
+  --color-peixoto-accent: #d63031;
+  --color-peixoto-dark: #0a0505;
+  --color-peixoto-card: #150a0a;
+  --color-peixoto-glass: rgba(255, 77, 77, 0.05);
+
+  --shadow-peixoto: 0 0 20px rgba(255, 77, 77, 0.2);
+  --shadow-peixoto-lg: 0 0 40px rgba(255, 77, 77, 0.3);
+
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #0a0505;
+  color: #f5f5f5;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  overflow: hidden;
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-peixoto-card/60 backdrop-blur-md border border-white/10 rounded-2xl shadow-peixoto;
+  }
+  
+  .glass-input {
+    @apply bg-white/5 border border-white/10 rounded-xl px-4 py-2 focus:outline-none focus:border-peixoto-primary/50 transition-all;
+  }
+
+  .peixoto-button {
+    @apply bg-peixoto-primary hover:bg-peixoto-accent text-white font-medium py-2 px-6 rounded-xl transition-all active:scale-95 shadow-peixoto hover:shadow-peixoto-lg;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #331a1a;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #4a2626;
+}

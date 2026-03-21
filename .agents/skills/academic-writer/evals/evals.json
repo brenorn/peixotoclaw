@@ -1,0 +1,17 @@
+{
+  "skill_name": "academic-writer",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Escreva o resumo (Abstract) de um artigo para a revista 'Automation in Construction'. O tema é a simulação de frameworks de agentes (PydanticAI vs LangGraph) para controle de cronograma de obras. Use o SIMULATION_RESULTS.md como fonte principal.",
+      "expected_output": "Um resumo acadêmico profissional citando o vencedor da simulação (LangGraph) e justificando com base no rigor de engenharia civil.",
+      "files": ["d:/OneDrive/aiproj/MAS-Doctorate/Simulacao/SIMULATION_RESULTS.md"]
+    },
+    {
+      "id": 2,
+      "prompt": "Gere uma seção de 'Practical Applications' seguindo o modelo da ASCE (Journal of Computing in Civil Engineering) para os resultados da nossa simulação de agentes MAS.",
+      "expected_output": "Uma seção sem numeração, discutindo como engenheiros de campo podem usar os agentes para mitigar atrasos críticos.",
+      "files": ["d:/OneDrive/aiproj/MAS-Doctorate/Simulacao/SIMULATION_RESULTS.md"]
+    }
+  ]
+}

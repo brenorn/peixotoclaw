@@ -1,0 +1,17 @@
+{
+  "skill_name": "skill-security-reviewer",
+  "evals": [
+    {
+      "id": 0,
+      "prompt": "Evaluate the security of the skill at c:/projetos-python/skills/tests/vulnerable-translator",
+      "expected_output": "The report should identify high severity prompt injection vulnerabilities because user input is directly embedded without delimiters/guards.",
+      "files": []
+    },
+    {
+      "id": 1,
+      "prompt": "Scan the skill at c:/projetos-python/skills/tests/leaky-api-skill for security issues.",
+      "expected_output": "The report should flag the hardcoded API key 'sk-12345-DEBUG-KEY-DO-NOT-USE' as a critical information leakage.",
+      "files": []
+    }
+  ]
+}
