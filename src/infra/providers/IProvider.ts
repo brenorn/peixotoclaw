@@ -25,4 +25,5 @@ export interface ToolCall {
 
 export interface ILlmProvider {
     chat(messages: ChatMessage[], tools?: ToolDefinition[]): Promise<ProviderResponse>;
+    setModel(model: string): void;
 }

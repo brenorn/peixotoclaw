@@ -1,6 +1,7 @@
 import { ILlmProvider } from './IProvider.js';
 import { GeminiProvider } from './GeminiProvider.js';
 import { DeepSeekProvider } from './DeepSeekProvider.js';
+import { OpenCodeProvider } from './OpenCodeProvider.js';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -16,6 +17,8 @@ export class ProviderFactory {
             case 'deepseek':
                 if (!process.env.DEEPSEEK_API_KEY) throw new Error('DEEPSEEK_API_KEY not found');
                 return new DeepSeekProvider(process.env.DEEPSEEK_API_KEY);
+            case 'opencode':
+                return new OpenCodeProvider();
             default:
                 throw new Error(`Provider ${type} not supported`);
         }

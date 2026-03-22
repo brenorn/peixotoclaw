@@ -10,6 +10,11 @@ export class GeminiProvider implements ILlmProvider {
         this.apiKey = apiKey;
     }
 
+    setModel(model: string): void {
+        console.log(`[GeminiProvider] Switching to model: ${model}`);
+        this.model = model;
+    }
+
     async chat(messages: ChatMessage[], tools?: ToolDefinition[]): Promise<ProviderResponse> {
         const url = `${this.baseUrl}/${this.model}:generateContent?key=${this.apiKey}`;
         

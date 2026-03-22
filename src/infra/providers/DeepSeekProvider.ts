@@ -10,6 +10,11 @@ export class DeepSeekProvider implements ILlmProvider {
         this.apiKey = apiKey;
     }
 
+    setModel(model: string): void {
+        console.log(`[DeepSeekProvider] Switching model: ${model}`);
+        this.model = model;
+    }
+
     async chat(messages: ChatMessage[], tools?: ToolDefinition[]): Promise<ProviderResponse> {
         const body: any = {
             model: this.model,

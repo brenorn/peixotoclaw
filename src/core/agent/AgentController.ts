@@ -7,6 +7,7 @@ import { MemoryManager } from '../memory/MemoryManager.js';
 import { CreateFileTool, ReadFileTool, ListDirTool } from './tools/FileTools.js';
 import { ProviderFactory } from '../../infra/providers/ProviderFactory.js';
 import { PdfParser } from '../../shared/PdfParser.js';
+import { LessTokens } from '../utils/LessTokens.js';
 import fs from 'fs';
 
 export interface ProcessResult {
@@ -56,7 +57,9 @@ export class AgentController {
                         enrichedText += `\n\n[Content of attached PDF (${att.path})]:\n${pdfText}`;
                     } else if (att.type === 'md') {
                         console.log(`[AgentController] Reading Markdown: ${att.path}`);
-                        const mdText = fs.readFileSync(att.path, 'utf-8');
+                        let mdText = fs.readFileSync(att.path, 'utf-8');
+                        // Apply LessTokens pruning for large files
+                        mdText = LessTokens.prune(mdText);
                         enrichedText += `\n\n[Content of attached MD (${att.path})]:\n${mdText}`;
                     }
                 } catch (e: any) {
@@ -70,8 +73,9 @@ export class AgentController {
             finalInvolvesVoice = true;
         }
 
-        // 4. Load context
-        const history = await this.memoryManager.getContext(conversationId);
+        // 4. Load context and apply LessTokens compression
+        let history = await this.memoryManager.getContext(conversationId);
+        history = LessTokens.compactHistory(history);
         
         // 5. Load skills and Detect Tags
         const allSkills = SkillLoader.loadAll();
@@ -113,7 +117,29 @@ Your responses must be:
 - Language: ALWAYS match the user's language.
 - Structure: Use professional Markdown formatting.`;
 
-        // 6. Run Agent Loop
+        // 6. Smart Routing Logic
+        const isHighTierTask = activeSkillNames.has('architecture-guardian') || 
+                               activeSkillNames.has('architecture-blueprint-generator') || 
+                               activeSkillNames.has('feature-builder') ||
+                               activeSkillNames.has('coder') ||
+                               enrichedText.toLowerCase().includes('[model:pro]');
+
+        const forceLowTier = enrichedText.toLowerCase().includes('[model:free]') || 
+                             activeSkillNames.has('documentation-scribe') ||
+                             activeSkillNames.has('escriba');
+
+        if (forceLowTier) {
+            this.provider.setModel('gemini-2.0-flash');
+            console.log(`[AgentController] Smart Routing: Selected FREE/FAST tier.`);
+        } else if (isHighTierTask) {
+            this.provider.setModel('gemini-2.0-pro-exp-02-05');
+            console.log(`[AgentController] Smart Routing: Selected PRO/HIGH tier.`);
+        } else {
+            // Default to flash for casual chat
+            this.provider.setModel('gemini-2.0-flash');
+        }
+
+        // 7. Run Agent Loop
         const agentLoop = new AgentLoop(this.provider, this.toolRegistry);
         const userMessage: ChatMessage = { role: 'user', content: enrichedText };
         
