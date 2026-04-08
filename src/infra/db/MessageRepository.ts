@@ -33,4 +33,9 @@ export class MessageRepository {
         `);
         return stmt.all(conversationId, limit) as Message[];
     }
+
+    public deleteAllByConversationId(conversationId: string): void {
+        const stmt = this.db.prepare('DELETE FROM messages WHERE conversation_id = ?');
+        stmt.run(conversationId);
+    }
 }

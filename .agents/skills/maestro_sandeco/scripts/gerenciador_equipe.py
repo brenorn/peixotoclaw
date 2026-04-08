@@ -8,19 +8,35 @@ e comunicação entre agentes do esquadrão.
 import json
 import os
 import sys
+import argparse
+import io
 from pathlib import Path
 from datetime import datetime
 
+# Forçar UTF-8 para evitar problemas com caracteres especiais no Windows
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
-PASTA_ESQUADRAO = ".agent/skills/pipeline-maestro/.antigravity/equipe"
+
+# Local padrão caso nada seja especificado
+DEFAULT_SQUAD_PATH = ".antigravity/equipe"
 
 
 class GerenciadorEsquadrao:
     """Classe responsável por orquestrar toda a infraestrutura
     de comunicação e atividades do esquadrão multi-agente."""
 
-    def __init__(self, diretorio_base: str = PASTA_ESQUADRAO):
-        self._diretorio_base = Path(diretorio_base)
+    def __init__(self, squad_dir: str | Path | None = None):
+        # Prioridade: 1. Argumento direto, 2. Env Var, 3. Default relativo ao CWD
+        env_project = os.getenv("PEIXOTOCLAW_PROJECT_PATH")
+        
+        if squad_dir:
+            base = Path(squad_dir)
+        elif env_project:
+            base = Path(env_project) / DEFAULT_SQUAD_PATH
+        else:
+            base = Path(DEFAULT_SQUAD_PATH)
+
+        self._diretorio_base = base
         self._caminho_registro = self._diretorio_base / "registro_atividades.json"
         self._caminho_caixa_entrada = self._diretorio_base / "caixa_entrada"
         self._caminho_travas = self._diretorio_base / "travas"
@@ -41,7 +57,7 @@ class GerenciadorEsquadrao:
         if not self._caminho_aviso_geral.exists():
             self._caminho_aviso_geral.write_text("", encoding="utf-8")
 
-        print("[OK] Infraestrutura do Esquadrão SandecoMaestro preparada com sucesso.")
+        print(f"[OK] Infraestrutura preparada em: {self._diretorio_base}")
 
     def criar_atividade(
         self,
@@ -59,6 +75,8 @@ class GerenciadorEsquadrao:
             "plano_validado": False,
             "responsavel": responsavel,
             "pre_requisitos": pre_requisitos or [],
+            "tokens_locais": 0,
+            "custo_estimado_nuvem": 0.0,
             "criado_em": datetime.now().isoformat(),
         }
 
@@ -117,13 +135,28 @@ class GerenciadorEsquadrao:
 
         print(f"[ERRO] Atividade #{id_atividade} não encontrada.")
 
+    def registrar_economia(self, id_atividade: int, tokens: int, preco_por_milhao: float = 15.0) -> None:
+        """Calcula e registra a economia gerada ao rodar a tarefa localmente."""
+        dados = self._carregar_registro()
+        for atividade in dados["atividades"]:
+            if atividade["id"] == id_atividade:
+                custo = (tokens / 1_000_000) * preco_por_milhao
+                atividade["tokens_locais"] = tokens
+                atividade["custo_estimado_nuvem"] = round(custo, 4)
+                self._salvar_registro(dados)
+                print(f"[ECONOMIA] Atividade #{id_atividade}: {tokens} tokens locais = ${custo:.4f} economizados.")
+                return
+
     def _carregar_registro(self) -> dict:
         """Carrega o arquivo de registro de atividades."""
+        if not self._caminho_registro.exists():
+            return {"atividades": [], "integrantes": []}
         conteudo = self._caminho_registro.read_text(encoding="utf-8")
         return json.loads(conteudo)
 
     def _salvar_registro(self, dados: dict) -> None:
         """Persiste os dados no arquivo de registro."""
+        self._caminho_registro.parent.mkdir(parents=True, exist_ok=True)
         self._caminho_registro.write_text(
             json.dumps(dados, indent=2, ensure_ascii=False),
             encoding="utf-8",
@@ -132,57 +165,72 @@ class GerenciadorEsquadrao:
 
 def principal():
     """Ponto de entrada para execução via linha de comando."""
-    gerenciador = GerenciadorEsquadrao()
+    parser = argparse.ArgumentParser(description="Gerenciador de Esquadrão SandecoMaestro")
+    parser.add_argument("comando", choices=["iniciar", "criar_atividade", "comunicado_geral", "mensagem_direta", "listar", "atualizar_estado", "registrar_economia"])
+    parser.add_argument("--project", help="Caminho base do projeto")
+    parser.add_argument("--squad-dir", help="Caminho direto para a pasta da equipe")
+    
+    # Argumentos posicionais extras dependendo do comando
+    parser.add_argument("args", nargs="*", help="Argumentos extras para o comando")
 
-    if len(sys.argv) < 2:
-        print("Uso: python gerenciador_equipe.py <comando> [argumentos...]")
-        print("Comandos disponíveis: iniciar, criar_atividade, comunicado_geral, mensagem_direta, listar, atualizar_estado")
-        sys.exit(1)
+    args = parser.parse_args()
 
-    comando = sys.argv[1]
+    # Determinar diretório da equipe
+    squad_path = args.squad_dir
+    if args.project:
+        squad_path = Path(args.project) / DEFAULT_SQUAD_PATH
 
-    if comando == "iniciar":
+    gerenciador = GerenciadorEsquadrao(squad_dir=squad_path)
+
+    if args.comando == "iniciar":
         gerenciador.preparar_infraestrutura()
 
-    elif comando == "criar_atividade":
-        if len(sys.argv) < 4:
-            print("Uso: python gerenciador_equipe.py criar_atividade <titulo> <responsavel> [pre_req1,pre_req2,...]")
+    elif args.comando == "criar_atividade":
+        if len(args.args) < 2:
+            print("Erro: Faltam título e responsável.")
             sys.exit(1)
-        titulo = sys.argv[2]
-        responsavel = sys.argv[3]
+        titulo = args.args[0]
+        responsavel = args.args[1]
         pre_requisitos = []
-        if len(sys.argv) > 4:
-            pre_requisitos = [int(p) for p in sys.argv[4].split(",")]
+        if len(args.args) > 2:
+            pre_requisitos = [int(p) for p in args.args[2].split(",")]
         gerenciador.criar_atividade(titulo, responsavel, pre_requisitos)
 
-    elif comando == "comunicado_geral":
-        if len(sys.argv) < 4:
-            print("Uso: python gerenciador_equipe.py comunicado_geral <remetente> <conteudo>")
+    elif args.comando == "comunicado_geral":
+        if len(args.args) < 2:
+            print("Erro: Faltam remetente e conteúdo.")
             sys.exit(1)
-        gerenciador.comunicado_geral(sys.argv[2], sys.argv[3])
+        gerenciador.comunicado_geral(args.args[0], args.args[1])
 
-    elif comando == "mensagem_direta":
-        if len(sys.argv) < 5:
-            print("Uso: python gerenciador_equipe.py mensagem_direta <remetente> <destinatario> <conteudo>")
+    elif args.comando == "mensagem_direta":
+        if len(args.args) < 3:
+            print("Erro: Faltam remetente, destinatário e conteúdo.")
             sys.exit(1)
-        gerenciador.mensagem_direta(sys.argv[2], sys.argv[3], sys.argv[4])
+        gerenciador.mensagem_direta(args.args[0], args.args[1], args.args[2])
 
-    elif comando == "listar":
+    elif args.comando == "listar":
         atividades = gerenciador.consultar_atividades()
         if not atividades:
             print("Nenhuma atividade registrada.")
         for ativ in atividades:
             print(f"  #{ativ['id']} [{ativ['estado']}] {ativ['titulo']} → {ativ['responsavel']}")
 
-    elif comando == "atualizar_estado":
-        if len(sys.argv) < 4:
-            print("Uso: python gerenciador_equipe.py atualizar_estado <id> <novo_estado>")
+    elif args.comando == "atualizar_estado":
+        if len(args.args) < 2:
+            print("Erro: Faltam ID e novo estado.")
             sys.exit(1)
-        gerenciador.atualizar_estado(int(sys.argv[2]), sys.argv[3])
+        gerenciador.atualizar_estado(int(args.args[0]), args.args[1])
 
-    else:
-        print(f"[ERRO] Comando '{comando}' não reconhecido.")
-        sys.exit(1)
+    elif args.comando == "registrar_economia":
+        if len(args.args) < 2:
+            print("Erro: Faltam ID da atividade e número de tokens.")
+            sys.exit(1)
+        id_ativ = int(args.args[0])
+        tokens = int(args.args[1])
+        preco = 15.0
+        if len(args.args) > 2:
+            preco = float(args.args[2])
+        gerenciador.registrar_economia(id_ativ, tokens, preco)
 
 
 if __name__ == "__main__":

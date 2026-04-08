@@ -1,0 +1,17 @@
+{
+  "skill_name": "github-sync",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Sincronize meu workspace no github de forma segura agora.",
+      "expected_output": "O agente deve executar o script sync.py, criar uma nova branch de timestamp, e relatar o sucesso do push da branch (ou falha controlada se não houver internet).",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "Fazer upload do peixotoclaw para o git limpando arquivos pessoais.",
+      "expected_output": "O agente deve validar que a pasta projects/ não foi incluída na branch criada.",
+      "files": []
+    }
+  ]
+}

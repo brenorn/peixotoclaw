@@ -15,6 +15,11 @@ interface Conversation {
   created_at: string;
 }
 
+interface Project {
+  id: string;
+  name: string;
+}
+
 function App() {
   const [selectedSkill, setSelectedSkill] = useState<string | null>(null);
   const [isInstallOpen, setIsInstallOpen] = useState(false);
@@ -22,12 +27,24 @@ function App() {
   const [isProcessing, setIsProcessing] = useState(false);
   const [conversations, setConversations] = useState<Conversation[]>([]);
   const [selectedConversationId, setSelectedConversationId] = useState<string | null>(null);
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [selectedProjectId, setSelectedProjectId] = useState<string | null>(null);
 
   const userId = "web-user-01";
 
   useEffect(() => {
     fetchConversations();
+    fetchProjects();
   }, []);
+
+  const fetchProjects = async () => {
+    try {
+      const response = await axios.get('http://localhost:3001/api/projects');
+      setProjects(response.data);
+    } catch (error) {
+      console.error('Error fetching projects:', error);
+    }
+  };
 
   const fetchConversations = async () => {
     try {
@@ -69,6 +86,28 @@ function App() {
       fetchConversations();
     } catch (error) {
       console.error('New Chat Error:', error);
+    }
+  };
+
+  const handleDeleteConversation = async (id: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (!window.confirm("Deseja realmente excluir esta conversa?")) return;
+    
+    try {
+      await axios.delete(`http://localhost:3001/api/conversations/${id}`);
+      
+      // Update UI immediately via local state filtering
+      setConversations(prev => prev.filter(c => c.id !== id));
+      
+      if (selectedConversationId === id) {
+        setSelectedConversationId(null);
+        setMessages([]);
+      }
+      
+      console.log(`[PeixotoPulse] Conversa ${id} excluída com sucesso.`);
+      await fetchConversations(); // Sync with server for safety
+    } catch (error) {
+      console.error('Delete Chat Error:', error);
     }
   };
 
@@ -116,7 +155,11 @@ function App() {
         conversations={conversations}
         selectedConversationId={selectedConversationId}
         onSelectConversation={handleSelectConversation}
+        onDeleteConversation={handleDeleteConversation}
         onNewChat={handleNewChat}
+        projects={projects}
+        selectedProjectId={selectedProjectId}
+        onSelectProject={setSelectedProjectId}
       />
       <main className="flex-1 flex flex-col h-full">
         <ChatWindow 

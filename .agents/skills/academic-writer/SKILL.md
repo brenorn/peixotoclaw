@@ -1,67 +1,50 @@
 ---
 name: academic-writer
-description: 'Expert writing skill for high-impact journals (Q1). Use this to write, structure, or review scientific papers for Automation in Construction, CACEIE, ASCE J. of Computing, and Adv. Eng. Informatics. Strictly follows templates, performs RAG for evidence, and prevents hallucinations.'
+description: 'Escritor-Orientador Ph.D. (Nexus v5.2): Motor de Mentoria e Escrita Científica. Expande e blinda teses Magnum preservando a voz original e injetando rigor Qualis A1 (2025/2026).'
 ---
 
-# Academic Writer (Q1 Standard) 🎓✍️🔬
+# Academic Writer (Nexus V5 Nexus) 🎓✍️🔬
 
-Esta habilidade transforma dados brutos e resultados de pesquisa em manuscritos de nível Q1, seguindo o rigor acadêmico e as normas específicas de cada revista.
+Este motor utiliza a arquitetura cognitiva avançada **MASWOS V5 NEXUS**. Ele opera através de um pipeline de 43 agentes especializados para garantir rigor absoluto, zero alucinação e conformidade Qualis A1.
 
-## Princípios Fundamentais (PEIXOTO Rigor)
-1. **Zero Hallucination**: Nunca invente dados. Se algo não estiver nos resultados fornecidos ou nos artigos recuperados (RAG), use placeholders ou peça ao usuário os dados reais.
-2. **Template Fidelity**: Sempre leia e siga a estrutura, normas de citação e limites de palavras da revista alvo.
-3. **Knowledge Primacy**: Em informática e engenharia civil, o foco é na representação do conhecimento e na escalabilidade dos métodos, não apenas no código ou na matemática.
-4. **XAI Integration**: Sempre inclua a justificativa científica (Rationale) para as conclusões apresentadas.
+## 🏆 3-Tier Publishing System (Nexus V5)
 
-## Arquitetura Interna (Padrão Sandeco) 🤖📚
-A skill utiliza uma arquitetura de **Agentic RAG** para garantir precisão Q1 e evitar alucinações:
-1.  **Memory Hub (`scripts/memory.py`)**: Mantém o contexto da tese e interações passadas para garantir coerência entre os capítulos.
-2.  **Dataset Router (`scripts/agentic_academic_rag.py`)**: Um agente especialista em roteamento que decide qual base (Normas, IA, Resultados ou Estilo) consultar.
-3.  **Knowledge Base (`scripts/datasets.py`)**: Catálogo estruturado de fontes de dados acadêmicas.
+O PeixotoClaw escala seu rigor conforme o alvo:
 
-## Fluxo de Trabalho Acadêmico
+- 🥇 **NÍVEL 1: Magnum (Doutorado/Tese)**
+    - **Ações**: Cascata Total (43 agentes: A0 a A43).
+    - **Alvo**: +110 páginas com rigor exaustivo e provas matemáticas.
+- 🥈 **NÍVEL 2: Standard (Artigo Q1-Q2)**
+    - **Ações**: Fast-Track (20 agentes: A0 a A16 + A36, A38, A42).
+    - **Alvo**: 15-30 páginas para periódicos de alto impacto.
+- 🥉 **NÍVEL 3: Express (Resumo/Short Paper)**
+    - **Ações**: Pipeline Tático (10 agentes: A0, A1, A2, A3, A4, A12, A15).
+    - **Alvo**: 5-10 páginas para congressos ou relatórios técnicos rápidos.
 
-### 1. Iniciação e Memória
-Ao começar um novo artigo, a skill inicializa a `AcademicSessionMemory`.
-- **Comando**: `python scripts/memory.py` para verificar o estado da sessão.
+## 🎭 Hierarquia de Agentes (Internal)
 
-### 2. Pesquisa e RAG (Agentic)
-Sempre que precisar embasar uma afirmação ou citar uma norma:
-- **Ação**: A skill aciona o `scripts/agentic_academic_rag.py`.
-- **Roteamento**: O sistema decide se consulta a `construction_norms` ou `ai_frameworks`.
-- **Extração**: Retorna evidências concretas para o manuscrito.
+A skill redireciona as tarefas para os agentes localizados em `./agents/`. O agente central é o **A0 - Editor-Chefe PhD**, que abre e fecha cada fase do `DISPATCHER_ATIVACAO.md`.
 
-### 3. Escrita com Templates
-A skill deve ler o arquivo de template (`.docx` ou `.pdf`) fornecido pelo usuário antes de iniciar a escrita.
-- **Estruturação**: Mapeia os estilos de cabeçalho, bibliografia e seções obrigatórias.
+## ⚙️ Workflow do Maestro
 
-### 3. Escrita Estruturada
-- **Abstract & Keywords**: Foco em impacto e contribuição original.
-- **Introduction**: O "Funil Científico" (Contexto -> Problema -> Gap -> Objetivo).
-- **Methodology**: Descrição detalhada do MAS (Multi-Agent System) e frameworks testados.
-- **Results & Discussion**: Comparação objetiva PydanticAI vs Native vs LangGraph.
-- **Practical Applications**: (Obrigatório para ASCE) Como a indústria pode usar isso hoje.
-
-## Regras por Revista
-
-### Automation in Construction (AiC)
-- **Foco**: Tecnologia da informação no ciclo de vida da construção.
-- **Exigência**: Reprodutibilidade e fluxos BIM.
-
-### Computer-Aided Civil and Infrastructure Engineering (CACEIE)
-- **Foco**: Algoritmos computacionais avançados (ex: IA poderosa).
-- **Exigência**: Alta inovação matemática/algorítmica.
-
-### Journal of Computing in Civil Engineering (ASCE)
-- **Formatação**: Máximo 30 páginas, espaçamento duplo.
-- **Estilo**: Sem numeração de seções. Referências ASCE.
-
-### Advanced Engineering Informatics (AEI)
-- **Foco**: Ciência da representação do conhecimento.
-- **Exigência**: Demonstrar generabilidade e poder do método.
-
-## Ferramentas de Apoio
-- Se precisar verificar citações, use: `python scripts/rag_researcher.py --query "[TERMO]"`
+1. **Ativação**: O Maestro do PeixotoClaw chama o `academic-writer`.
+2. **Setup**: Definição do Nível (Magnum/Standard/Express).
+3. **Execution**: O `nexus_bridge.py` consome os templates em `./templates/` e os prompts em `./agents/`.
+4. **Output**: Geração de documentos em Markdown, LaTeX ou DOCX na pasta `data/research/` do projeto ativo.
 
 ---
-"Rigor não é chatice, é a garantia de que o conhecimento será útil."
+*Powered by MASWOS V5 NEXUS Engine - Prof. Marcelo Reference Implementation*
+
+## 🔄 Protocolo Escritor-Orientador (v5.2) - "Refine & Expand" 🧬🎓
+
+A Skill opera agora no modo de Mentoria e Blindagem de Banca:
+
+1.  **Regra do "Sacred DNA" (Integridade Autoral)**: O texto original do rascunho é a base inalterável. Ferramentas (MS Project, Primavera), metodologias (AWP, EVM, LPS) e critérios de sucesso citados pelo aluno **devem** ser mantidos integralmente.
+2.  **Camada de "Blindagem de Banca"**: O Escritor-Orientador deve:
+    *   **Integrar Ressalvas**: Injetar as correções de Profa. Andréia e Prof. Pastor diretamente nos parágrafos temáticos, agindo como braço direito do aluno na revisão.
+    *   **Rastreabilidade Histórica**: **PROIBIDO** alterar datas de citações originais (ex: Ballard 1992). O motor deve **ADICIONAR** novas fontes (2024-2026) como camadas de comprovação contemporânea.
+    *   **Densidade por Expansão e Desacoplamento**: Aumentar o volume de páginas detalhando a profundidade teórica (ex: formalização do MAS) sem depender de softwares comerciais (Decoupling Tool vs Model).
+3.  **Handoff de Originalidade**: O A0 (Editor) deve reprovar qualquer texto que descaracterize a intenção do pesquisador ou que simplifique excessivamente a complexidade do canteiro.
+
+---
+*Powered by MASWOS V5 NEXUS Engine - Protocolo Ph.D. Magnum Consolidado*

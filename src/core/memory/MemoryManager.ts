@@ -64,4 +64,9 @@ export class MemoryManager {
     public async getFullHistory(conversationId: string): Promise<Message[]> {
         return this.messageRepo.findByConversationId(conversationId, 100);
     }
+
+    public async deleteConversation(conversationId: string): Promise<void> {
+        this.messageRepo.deleteAllByConversationId(conversationId);
+        this.conversationRepo.delete(conversationId);
+    }
 }

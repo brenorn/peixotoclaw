@@ -1,0 +1,29 @@
+{
+  "skill_name": "django-db-specialist",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Crie o modelo 'Pregao' com campos de CNPJ, Data, Valor e um método no Model para calcular a data de vencimento da impugnação.",
+      "expected_output": "Inclui UUIDField, DecimalField para Valor, e a lógica de data DENTRO da classe Model (Fat Model), não em uma função externa.",
+      "files": [
+        "core/models/pregao.py"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Otimize a query do CuratorAgent que busca oportunidades e seus editais, resolvendo o problema de N+1 queries.",
+      "expected_output": "Sugestão de uso de .select_related('edital') ou .prefetch_related() dependendo da cardinalidade.",
+      "files": [
+        "lib/agent_kit/agents/curador.py"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Adicione o campo 'edital_pdf' ao modelo Curador de forma que os arquivos sejam salvos no bucket do GCS.",
+      "expected_output": "Campo usando GCS_STORAGE bucket do django-storages, sem referências a 'fs' local.",
+      "files": [
+        "core/models/curador.py"
+      ]
+    }
+  ]
+}

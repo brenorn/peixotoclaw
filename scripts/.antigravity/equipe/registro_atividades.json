@@ -1,0 +1,16 @@
+{
+  "atividades": [
+    {
+      "id": 1,
+      "titulo": "Restauro Funcional: Mentor IA e Dados Dinâmicos",
+      "estado": "PENDENTE",
+      "plano_validado": false,
+      "responsavel": "@Builder",
+      "pre_requisitos": [],
+      "tokens_locais": 0,
+      "custo_estimado_nuvem": 0.0,
+      "criado_em": "2026-04-07T19:01:49.010524"
+    }
+  ],
+  "integrantes": []
+}

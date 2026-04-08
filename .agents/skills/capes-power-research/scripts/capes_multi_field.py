@@ -14,17 +14,25 @@ class CapesMultiFieldBrowser(CapesBrowser):
         # Verificar se os campos avançados já estão visíveis (usando o seletor verificado select.campo)
         is_advanced = await page.query_selector("select.campo")
         
+        # Fechar banner de Cookies se existir (Utilizando o método da classe base)
+        await self.accept_cookies(page)
+
         if not is_advanced:
             print("⚙️ Ativando formulário de Busca Avançada...")
             try:
-                # O ID identificado pelo subagent é #btn-busca-avancada
-                await page.click("#btn-busca-avancada", timeout=10000)
-                await page.wait_for_selector("select.campo", timeout=15000)
-            except:
-                print("⚠️ Falha ao ativar via ID, tentando via texto...")
-                # No screenshot o botão de alternar para avançado costuma ser o ID #btn-busca-avancada
-                # Se estivermos em modo simples, esse botão existirá.
-                await page.click("text='Busca Avançada'", timeout=5000)
+                # Tentar clicar no link de busca avançada
+                await page.click("a:has-text('Busca Avançada'), #btn-busca-avancada", timeout=10000, force=True)
+                print("⏳ Aguardando renderização do formulário...")
+                await page.wait_for_timeout(3000) # Wait for animation
+                await page.wait_for_selector("select.campo", timeout=15000, state="visible")
+                print("✅ Formulário de Busca Avançada detectado.")
+            except Exception as e:
+                print(f"⚠️ Falha ao ativar Busca Avançada via clique: {e}")
+                await page.screenshot(path="failed_advanced_click.png")
+                # Forçar redirecionamento se o clique falhar
+                print("🔗 Forçando redirecionamento direto para o buscador avançado...")
+                await page.goto("https://www-periodicos-capes-gov-br.ez54.periodicos.capes.gov.br/index.php/acervo/buscador.html?advanced=true")
+                await page.wait_for_selector("select.campo", timeout=20000, state="visible")
         else:
             print("✅ Formulário de Busca Avançada já está ativo.")
         
@@ -47,23 +55,30 @@ class CapesMultiFieldBrowser(CapesBrowser):
             # Se precisarmos de mais linhas do que as que já existem
             if i >= len(rows):
                 print(f"➕ Adicionando campo {i+1} ({row_data.operator})...")
-                await page.click("#add-field")
-                await page.wait_for_timeout(500)
+                await page.click("#add-field", force=True)
+                await page.wait_for_timeout(1000)
                 # Re-selecionar as linhas para pegar a nova
                 rows = await page.query_selector_all("div.linha-busca")
 
             current_row = rows[i]
+            print(f"✍️ Preenchendo linha {i+1}...")
             
             # Preencher a linha atual
             if i > 0:
-                # Selecionar Operador Lógico (na nova linha)
-                await current_row.select_option("select.op-logico", row_data.operator)
+                # Selecionar Operador Lógico
+                op_selector = "select.op-logico"
+                await current_row.wait_for_selector(op_selector, state="visible", timeout=5000)
+                await current_row.select_option(op_selector, row_data.operator)
 
             # Selecionar Tipo de Campo
-            await current_row.select_option("select.campo", row_data.field)
+            campo_selector = "select.campo"
+            await current_row.wait_for_selector(campo_selector, state="visible", timeout=5000)
+            await current_row.select_option(campo_selector, row_data.field)
             
             # Preencher Termo
-            await current_row.fill("input.form-control", row_data.term)
+            input_selector = "input.form-control"
+            await current_row.wait_for_selector(input_selector, state="visible", timeout=5000)
+            await current_row.fill(input_selector, row_data.term)
 
         # Clicar em Buscar
         await page.click("button.btn-busca-avancada")

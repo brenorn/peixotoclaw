@@ -9,31 +9,54 @@ class CapesBasesIntegration(CapesBrowser):
         url_bases = "https://www-periodicos-capes-gov-br.ez54.periodicos.capes.gov.br/index.php/acervo/lista-a-z-bases.html"
         await page.goto(url_bases)
         
-        # Preencher termo da base
+        # Aceitar cookies se houver banner bloqueando
+        print("🍪 Verificando cookies na lista de bases...")
+        await self.accept_cookies(page)
+        
+        # Preencher termo da base (usar apenas o nome principal para a busca)
+        short_name = base_name.split(' - ')[0] if ' - ' in base_name else base_name
+        print(f"⌨️ Digitanto '{short_name}' no buscador A-Z...")
         await page.wait_for_selector("input#termo")
-        await page.fill("input#termo", base_name)
+        await page.fill("input#termo", short_name)
         
         # Clicar em Pesquisar
         await page.click("button.br-button.primary.float-end")
         await page.wait_for_timeout(2000)
         
         # Verificar se a base apareceu nos resultados
-        # Procurar pelo link "Ver no editor" da primeira base que combine
-        ver_no_editor = await page.query_selector("a.br-button.small.link-default.add-metrics")
+        print(f"🎯 Aguardando renderização dos resultados...")
+        await page.wait_for_load_state("networkidle")
+        await page.screenshot(path="az_list_debug.png")
         
-        if ver_no_editor:
-            print(f"🚀 Base '{base_name}' encontrada. Abrindo editor externo...")
-            async with page.expect_popup() as popup_info:
-                await ver_no_editor.click()
+        # Procurar por um bloco que contém o título específico
+        print(f"🎯 Buscando container para '{base_name}'...")
+        
+        try:
+            # Tentar match exato primeiro, depois substring se falhar
+            container_selector = f"div.resultado-bases:has-text('{base_name}')"
+            base_container = await page.wait_for_selector(container_selector, timeout=10000)
             
-            external_page = await popup_info.value
-            await external_page.wait_for_load_state("networkidle")
+            if not base_container:
+                 # Fallback substring
+                 base_container = await page.wait_for_selector(f"div.resultado-bases:has-text('{base_name.split(' - ')[0]}')", timeout=10000)
+
+            if base_container:
+                ver_no_editor = await base_container.query_selector("a:has-text('Ver no editor')")
+                if ver_no_editor:
+                    print(f"🚀 Base '{base_name}' localizada. Abrindo editor externo...")
+                    async with page.expect_popup() as popup_info:
+                        await ver_no_editor.click()
+                    
+                    external_page = await popup_info.value
+                    await external_page.wait_for_load_state("load")
+                    print(f"🌍 Direcionado para: {external_page.url}")
+                    return external_page
+        except Exception as e:
+            print(f"⚠️ Erro ao localizar base: {e}")
+            await page.screenshot(path="error_az_selection.png")
             
-            print(f"🌍 Direcionado para: {external_page.url}")
-            return external_page
-        else:
-            print(f"❌ Base '{base_name}' não encontrada na lista.")
-            return None
+        print(f"❌ Base '{base_name}' não encontrada ou link indisponível.")
+        return None
 
     async def run_base_workflow(self, base_name: str):
         async with async_playwright() as p:

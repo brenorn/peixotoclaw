@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChefHat, Code, Plus, Check, Brain, Settings } from 'lucide-react';
+import { ChefHat, Code, Plus, Check, Brain, Settings, Trash2, Folder } from 'lucide-react';
 import axios from 'axios';
 
 interface Skill {
@@ -12,6 +12,11 @@ interface Conversation {
   created_at: string;
 }
 
+interface Project {
+  id: string;
+  name: string;
+}
+
 interface SidebarProps {
   selectedSkill: string | null;
   onSelectSkill: (name: string) => void;
@@ -19,7 +24,11 @@ interface SidebarProps {
   conversations: Conversation[];
   selectedConversationId: string | null;
   onSelectConversation: (id: string) => void;
+  onDeleteConversation: (id: string, e: React.MouseEvent) => void;
   onNewChat: () => void;
+  projects: Project[];
+  selectedProjectId: string | null;
+  onSelectProject: (id: string) => void;
 }
 
 const Sidebar: React.FC<SidebarProps> = ({ 
@@ -29,7 +38,11 @@ const Sidebar: React.FC<SidebarProps> = ({
   conversations,
   selectedConversationId,
   onSelectConversation,
-  onNewChat
+  onDeleteConversation,
+  onNewChat,
+  projects,
+  selectedProjectId,
+  onSelectProject
 }) => {
   const [skills, setSkills] = useState<Skill[]>([]);
   const [loading, setLoading] = useState(true);
@@ -63,6 +76,26 @@ const Sidebar: React.FC<SidebarProps> = ({
         </div>
       </div>
 
+      {/* Project Selector */}
+      <div className="mb-6 px-2">
+        <label className="text-[10px] font-bold text-white/30 uppercase tracking-widest mb-2 block">
+          Current Project
+        </label>
+        <div className="relative group">
+          <select 
+            value={selectedProjectId || ''} 
+            onChange={(e) => onSelectProject(e.target.value)}
+            className="w-full bg-white/5 border border-white/10 rounded-xl p-2.5 text-xs text-white/70 appearance-none cursor-pointer focus:outline-none focus:border-peixoto-primary/50 transition-colors"
+          >
+            <option value="" className="bg-peixoto-dark text-white/40">No Project Selected</option>
+            {projects.map(p => (
+              <option key={p.id} value={p.id} className="bg-peixoto-dark text-white">{p.name}</option>
+            ))}
+          </select>
+          <Folder size={14} className="absolute right-3 top-1/2 -translate-y-1/2 text-white/20 group-hover:text-peixoto-primary transition-colors pointer-events-none" />
+        </div>
+      </div>
+
       <button 
         onClick={onNewChat}
         className="mb-6 w-full group flex items-center gap-3 p-3 rounded-xl transition-all duration-200 bg-peixoto-primary/10 border border-peixoto-primary/30 text-peixoto-primary hover:bg-peixoto-primary/20"
@@ -83,17 +116,24 @@ const Sidebar: React.FC<SidebarProps> = ({
               <div className="px-2 text-xs text-white/20 italic">No history yet</div>
             ) : (
               conversations.map((conv) => (
-                <button
-                  key={conv.id}
-                  onClick={() => onSelectConversation(conv.id)}
-                  className={`w-full text-left p-2 rounded-lg text-xs truncate transition-colors ${
-                    selectedConversationId === conv.id
-                      ? 'bg-white/10 text-white font-medium'
-                      : 'text-white/40 hover:bg-white/5 hover:text-white/60'
-                  }`}
-                >
-                  {new Date(conv.created_at).toLocaleDateString()} - {conv.id}
-                </button>
+                <div key={conv.id} className="group flex items-center gap-1">
+                  <button
+                    onClick={() => onSelectConversation(conv.id)}
+                    className={`flex-1 text-left p-2 rounded-lg text-xs truncate transition-colors ${
+                      selectedConversationId === conv.id
+                        ? 'bg-white/10 text-white font-medium'
+                        : 'text-white/40 hover:bg-white/5 hover:text-white/60'
+                    }`}
+                  >
+                    {new Date(conv.created_at).toLocaleDateString()} - {conv.id}
+                  </button>
+                  <button 
+                    onClick={(e) => onDeleteConversation(conv.id, e)}
+                    className="p-2 opacity-0 group-hover:opacity-100 text-white/20 hover:text-red-400 transition-all"
+                  >
+                    <Trash2 size={14} />
+                  </button>
+                </div>
               ))
             )}
           </div>
