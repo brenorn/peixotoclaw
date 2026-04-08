@@ -13,6 +13,29 @@ class CapesBrowser:
         self.base_url = "https://www.periodicos.capes.gov.br/index.php/acesso-cafe.html"
         self.search_url = "https://www-periodicos-capes-gov-br.ez54.periodicos.capes.gov.br/index.php/acervo/buscador.html"
 
+    async def accept_cookies(self, page):
+        """Identifica e aceita o banner de cookies se estiver presente."""
+        print("🍪 Verificando banner de cookies...")
+        try:
+            # Seletores identificados no screenshot e variações comuns
+            selectors = [
+                "button#consent-accept", 
+                "button#onetrust-accept-btn-handler",
+                "button:has-text('Aceitar')", 
+                "button:has-text('Accept all')",
+                "button:has-text('Concordo')",
+                "button:has-text('Fechar')",
+                ".br-button.primary:has-text('Aceitar')"
+            ]
+            selector = ", ".join(selectors)
+            cookie_accept = await page.wait_for_selector(selector, timeout=5000)
+            if cookie_accept:
+                await cookie_accept.click()
+                print("✅ Cookies aceitos.")
+                await page.wait_for_timeout(2000) # Wait for overlay to vanish
+        except:
+            print("ℹ️ Banner de cookies não detectado ou já aceito.")
+
     async def login_cafe(self, page):
         print("🔐 Iniciando Login CAFe (UnB)...")
         await page.goto(self.base_url)
@@ -27,28 +50,66 @@ class CapesBrowser:
         print("👆 Selecionando opção da UnB...")
         await page.click("div[role='option']:has-text('UNB')")
         
-        # Clicar em Enviar
-        await page.click("button#enviarInstituicaoCafe")
+        # Clicar em Enviar (Usando seletor de texto para estabilidade)
+        await page.click("button:has-text('Enviar')")
         
         # 2. Página de Login UnB (Shibboleth)
         print("🆔 Preenchendo credenciais UnB...")
-        await page.wait_for_selector("input#username", timeout=30000)
-        await page.fill("input#username", self.user_unb)
-        await page.fill("input#password", self.key_unb)
-        await page.click("button.btn-primary") # Ajustado para .btn-primary conforme pesquisa
+        # Usar seletores flexíveis
+        await page.wait_for_selector("input[name='j_username'], input#username", timeout=30000)
+        await page.fill("input[name='j_username'], input#username", self.user_unb)
+        await page.fill("input[name='j_password'], input#password", self.key_unb)
+        # Clicar no botão de submissão (Login ou Acessar)
+        await page.click("button[type='submit'], button:has-text('Login'), button:has-text('Acessar')")
         
         # 3. Esperar redirecionamento e reconhecimento
         print("⏳ Aguardando reconhecimento institucional...")
-        # O portal costuma mostrar uma barra ou mensagem confirmando o acesso UnB
         try:
-            # Usar regex para ser mais flexível (este/esse/portal/periódicos)
             await page.wait_for_selector("text=/acessando .* portal por: UNB/i", timeout=30000)
         except:
-            # Fallback caso a frase varie
-            await page.wait_for_selector("text='UNB'", timeout=15000)
+            # Fallback caso a frase varie ou mostre apenas o logo da UnB
+            await page.wait_for_selector("img[alt*='UNB'], text='UNB'", timeout=15000)
         
         print("✅ Login UnB Realizado com Sucesso!")
         await page.screenshot(path="login_success.png")
+
+    async def download_pdf(self, page, article_url, filename):
+        """Tenta navegar até o artigo e realizar o download do PDF."""
+        print(f"📥 Tentando baixar PDF de: {article_url}")
+        try:
+            await page.goto(article_url)
+            # Procurar por botões de PDF (Texto: 'Texto completo em PDF', 'Download PDF', etc)
+            pdf_button = await page.wait_for_selector("text=/PDF/i", timeout=15000)
+            
+            if pdf_button:
+                async with page.expect_download() as download_info:
+                    await pdf_button.click()
+                download = await download_info.value
+# Adiciona o diretório do maestro para pegar o path_utils
+import sys
+import os
+SCRIPTS_DIR = os.path.join(os.path.dirname(__file__), "..", "..", "maestro_sandeco", "scripts")
+sys.path.append(SCRIPTS_DIR)
+try:
+    import path_utils
+except ImportError:
+    path_utils = None
+
+                if path_utils:
+                    path = path_utils.resolve_path(os.path.join("data", "pdfs", filename))
+                else:
+                    path = os.path.join("data", "pdfs", filename)
+                
+                os.makedirs(os.path.dirname(path), exist_ok=True)
+                await download.save_as(str(path))
+                print(f"✅ PDF salvo em: {path}")
+                return True
+            else:
+                print("⚠️ Botão de PDF não encontrado.")
+                return False
+        except Exception as e:
+            print(f"❌ Falha no download: {e}")
+            return False
 
     async def search_with_filters(self, page, filters: dict):
         print(f"🔍 Buscando por: {filters['keywords']}")
@@ -83,17 +144,18 @@ class CapesBrowser:
         await page.wait_for_timeout(3000) # Esperar recarregar
 
     async def scrape_results(self, page):
-        print("📄 Extraindo resumos...")
+        print("📄 Extraindo metadados...")
         results = []
         
         # Esperar pelos itens de busca
-        await page.wait_for_selector("div.item-busca")
+        await page.wait_for_selector("div.item-busca", timeout=20000)
         cards = await page.query_selector_all("div.item-busca")
         
-        for card in cards[:10]:
+        for i, card in enumerate(cards[:10]):
             try:
                 title_el = await card.query_selector("a.titulo-busca")
                 title = await title_el.inner_text() if title_el else "Sem título"
+                url = await title_el.get_attribute("href") if title_el else None
                 
                 author_el = await card.query_selector("a.view-autor")
                 author = await author_el.inner_text() if author_el else "Autor desconhecido"
@@ -102,9 +164,12 @@ class CapesBrowser:
                 abstract = await abstract_el.inner_text() if abstract_el else "Resumo não disponível"
                 
                 results.append({
+                    "id": f"CAPES_{i+1:02d}",
                     "title": title.strip(),
                     "author": author.strip(),
-                    "abstract": abstract.strip()[:300] + "..."
+                    "abstract": abstract.strip()[:300] + "...",
+                    "url": url,
+                    "local_path": None
                 })
             except Exception as e:
                 print(f"⚠️ Erro ao processar card: {e}")

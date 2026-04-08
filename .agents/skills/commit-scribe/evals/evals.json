@@ -1,0 +1,33 @@
+{
+  "skill_name": "commit-scribe",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Analise as mudanças recentes e gere um commit para a criação do workflow skill-creator e atualização do PLAN.md e TASKS.md conforme solicitado.",
+      "expected_output": "Mensagem de commit no formato convencional, mencionando o workflow skill-creator, a atualização da decisão arquitetural no PLAN.md e a conclusão da tarefa no TASKS.md.",
+      "files": [
+        "PLAN.md",
+        "TASKS.md",
+        ".agent/workflows/skill-creator.md"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Gere um commit para a implementação da correção de falsos negativos no Triador, com base nas tarefas SDD-T5 e SDD-T1 do TASKS.md.",
+      "expected_output": "Commit categorizado como 'fix' ou 'refactor', mencionando explicitamente as tasks SDD-T5 e SDD-T1.",
+      "files": [
+        "TASKS.md",
+        "lib/agent_kit/agents/triador.py"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Verifique o `git status` e `TASKS.md`. Gere um commit completo para a nova funcionalidade de busca paralela no PNCP.",
+      "expected_output": "Commit detalhando as mudanças nos arquivos físicos e a conclusão da meta correspondente no TASKS.md.",
+      "files": [
+        "TASKS.md",
+        "lib/agent_kit/tools/search.py"
+      ]
+    }
+  ]
+}
