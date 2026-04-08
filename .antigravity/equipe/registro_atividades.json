@@ -1,0 +1,96 @@
+{
+  "atividades": [
+    {
+      "id": 1,
+      "titulo": "Diagnóstico Monster V1",
+      "estado": "CONCLUIDO",
+      "plano_validado": false,
+      "responsavel": "Antigravity",
+      "pre_requisitos": [],
+      "criado_em": "2026-03-22T07:30:21.853076",
+      "tokens_locais": 12500,
+      "custo_estimado_nuvem": 0.1875
+    },
+    {
+      "id": 2,
+      "titulo": "Inventário de Regras Local",
+      "estado": "CONCLUIDO",
+      "plano_validado": false,
+      "responsavel": "Scribe",
+      "pre_requisitos": [],
+      "criado_em": "2026-03-22T07:30:59.916410"
+    },
+    {
+      "id": 3,
+      "titulo": "Ativação Satélite Clínica Mind",
+      "estado": "EM_ANDAMENTO",
+      "plano_validado": true,
+      "responsavel": "@PM",
+      "pre_requisitos": [
+        1,
+        2
+      ],
+      "criado_em": "2026-03-22T10:25:00"
+    },
+    {
+      "id": 4,
+      "titulo": "Design: Projeto Archetype & Gap Analysis",
+      "estado": "PENDENTE",
+      "plano_validado": false,
+      "responsavel": "@Architect",
+      "pre_requisitos": [],
+      "tokens_locais": 0,
+      "custo_estimado_nuvem": 0.0,
+      "criado_em": "2026-04-01T09:11:21.575837"
+    },
+    {
+      "id": 5,
+      "titulo": "Implementação Tier 1: Modelagem",
+      "estado": "CONCLUIDO",
+      "plano_validado": false,
+      "responsavel": "@Builder",
+      "pre_requisitos": [
+        4
+      ],
+      "tokens_locais": 0,
+      "custo_estimado_nuvem": 0.0,
+      "criado_em": "2026-04-01T09:19:15.636955"
+    },
+    {
+      "id": 6,
+      "titulo": "Teste A/B: Validação de Arquétipos",
+      "estado": "CONCLUIDO",
+      "plano_validado": false,
+      "responsavel": "@Builder",
+      "pre_requisitos": [
+        5
+      ],
+      "tokens_locais": 1500,
+      "custo_estimado_nuvem": 0.0225,
+      "criado_em": "2026-04-01T09:36:17.514983"
+    },
+    {
+      "id": 7,
+      "titulo": "Migração Treinamento para React",
+      "estado": "PENDENTE",
+      "plano_validado": false,
+      "responsavel": "@Architect",
+      "pre_requisitos": [],
+      "tokens_locais": 0,
+      "custo_estimado_nuvem": 0.0,
+      "criado_em": "2026-04-01T19:10:39.984233"
+    },
+    {
+      "id": 8,
+      "titulo": "Fix Tela Branca (Visibilidade)",
+      "estado": "PENDENTE",
+      "plano_validado": false,
+      "responsavel": "@Builder",
+      "pre_requisitos": [],
+      "tokens_locais": 0,
+      "custo_estimado_nuvem": 0.0,
+      "criado_em": "2026-04-01T19:38:38.950510"
+    }
+  ],
+  "integrantes": []
+}

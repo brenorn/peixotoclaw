@@ -170,4 +170,8 @@ Your responses must be:
         const providerName = ProviderFactory.getProviderName();
         return this.memoryManager.createNewConversation(userId, providerName);
     }
+
+    public async deleteConversation(conversationId: string): Promise<void> {
+        return this.memoryManager.deleteConversation(conversationId);
+    }
 }

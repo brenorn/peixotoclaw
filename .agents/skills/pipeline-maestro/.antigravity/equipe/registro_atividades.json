@@ -1,0 +1,67 @@
+{
+  "atividades": [
+    {
+      "id": "chatbot_search_20260326",
+      "descricao": "Busca de oportunidades para 'chatbot' (Pipeline Completo)",
+      "agente": "PipelineMaestro",
+      "status": "CONCLUIDO",
+      "pre_requisitos": [],
+      "timestamp_inicio": "2026-03-26T21:49:00",
+      "timestamp_fim": "2026-03-26T21:58:00",
+      "metadata": {
+        "term": "chatbot",
+        "genuinas_encontradas": 18,
+        "total_analisados": 63,
+        "batch_file": "temp/batch_chatbot.json",
+        "report_path": "core/tests/jsons_API_PNCP/20260326_002_chatbot_inteligencia_artificial_atendime/relatorio_oportunidades_20260326_215726.txt"
+      }
+    },
+    {
+      "id": "chatbot_strict_search_20260326",
+      "descricao": "Busca específica/estrita de 'chatbot' (Recuperação de FN)",
+      "agente": "PipelineMaestro",
+      "status": "EM_ANDAMENTO",
+      "pre_requisitos": [
+        "chatbot_search_20260326"
+      ],
+      "timestamp_inicio": "2026-03-26T22:25:00",
+      "timestamp_fim": null,
+      "metadata": {
+        "term": "chatbot strict",
+        "goal": "Capture chatbot-only items that were score 50 previously"
+      }
+    },
+    {
+      "id": 3,
+      "titulo": "Busca PNCP (Lab)",
+      "estado": "EXECUTANDO",
+      "responsavel": "LabWeb-Engine",
+      "detalhes": "Iniciando triagem para: Empresa de porte ME que presta serviços de chatbot com atuação em nível nacional.",
+      "criado_em": "2026-03-26T22:33:08.071174"
+    },
+    {
+      "id": 4,
+      "titulo": "Busca PNCP (Lab)",
+      "estado": "CONCLUÍDO",
+      "responsavel": "LabWeb-Engine",
+      "detalhes": "Encontrados 70 editais, 21 relevantes.",
+      "criado_em": "2026-03-26T22:33:19.025515"
+    },
+    {
+      "id": 5,
+      "titulo": "Curadoria de Oportunidades (Lab)",
+      "estado": "EXECUTANDO",
+      "responsavel": "LabWeb-Engine",
+      "detalhes": "Analisando YAML: itens_relevantes_empresa_de_porte_me_que_presta.yaml",
+      "criado_em": "2026-03-26T22:33:19.174967"
+    },
+    {
+      "id": 6,
+      "titulo": "Curadoria de Oportunidades (Lab)",
+      "estado": "CONCLUÍDO",
+      "responsavel": "LabWeb-Engine",
+      "detalhes": "Pipeline finalizado com 4 oportunidades genuínas.",
+      "criado_em": "2026-03-26T22:33:31.680428"
+    }
+  ]
+}

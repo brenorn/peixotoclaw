@@ -46,9 +46,10 @@ app.get('/', (req, res) => {
             <li>POST /api/chat</li>
             <li>GET /api/skills</li>
             <li>POST /api/skills/install</li>
-            <li>GET /api/conversations?userId=...</li>
             <li>GET /api/conversations/:id/messages</li>
             <li>POST /api/conversations/new</li>
+            <li>DELETE /api/conversations/:id</li>
+            <li>GET /api/projects</li>
         </ul>
     `);
 });

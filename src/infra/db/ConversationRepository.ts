@@ -29,4 +29,9 @@ export class ConversationRepository {
         const stmt = this.db.prepare('SELECT * FROM conversations WHERE user_id = ? ORDER BY created_at DESC');
         return stmt.all(userId) as Conversation[];
     }
+
+    public delete(id: string): void {
+        const stmt = this.db.prepare('DELETE FROM conversations WHERE id = ?');
+        stmt.run(id);
+    }
 }

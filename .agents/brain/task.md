@@ -1,0 +1,22 @@
+# Task: Studying Spec-Driven Development (SDD) for Gen-AI
+
+- [x] Research and Reading (Decomposition & Deep Dive) <!-- id: 0 -->
+    - [x] Exhaustive read of Martin Fowler's SDD Tools <!-- id: 1 -->
+    - [x] Exhaustive read of Medium SDD with Codex (including AGENTS.md details) <!-- id: 2 -->
+- [x] Comprehensive Documentation Expansion <!-- id: 3 -->
+    - [x] Draft exhaustive section on SDD Levels and historical context (MDD) <!-- id: 4 -->
+    - [x] Detail each tool (Kiro, Spec-kit, Tessl) with their specific file topologies <!-- id: 5 -->
+    - [x] Document the full evolutionary lifecycle of AGENTS.md and Thinking/Doing agents <!-- id: 8 -->
+    - [x] Incorporate detailed code logic and PR workflows shown in screenshots <!-- id: 9 -->
+- [x] HiveHub Ecosystem Research <!-- id: 10 -->
+    - [x] Exhaustive study of @hivehub/rulebook (NPM) <!-- id: 11 -->
+    - [x] Exhaustive study of LessTokens documentation <!-- id: 12 -->
+    - [x] Analyze integration of these tools into the SDD workflow <!-- id: 13 -->
+- [x] Diego's Custom Context Research <!-- id: 14 -->
+    - [x] Study .skills directory in D:\OneDrive\aiproj\PeixotoClaw\diego <!-- id: 15 -->
+    - [x] Study .windsurf directory in D:\OneDrive\aiproj\PeixotoClaw\diego <!-- id: 16 -->
+    - [x] Analyze how these local rules/skills map to SDD/Maestro concepts <!-- id: 17 -->
+- [/] Final Consolidation and Archival <!-- id: 6 -->
+    - [x] Create detailed study files in D:\OneDrive\aiproj\PeixotoClaw\diego <!-- id: 7 -->
+    - [x] Create PLAN.md, TASKS.md and CURRENT_CONTEXT.md at root <!-- id: 18 -->
+    - [/] Setup .agents/rules/ directory with specialists <!-- id: 19 -->
