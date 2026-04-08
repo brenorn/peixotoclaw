@@ -1,12 +1,35 @@
+# PeixotoClaw: Industrial & Private Gitignore
+
+# Privacy: Personal Projects MUST NOT be uploaded
+/projects/
+!/projects/.gitkeep
+
+# Archival & References (Not used in core)
+/references/get-shit-done/
+/vendor/EvoSkill/
+/references/*.rar
+/references/*.zip
+/references/*.7z
+
+# Runtime & Dependencies
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+build/
+.next/
+out/
+temp/
+tmp/
+logs/
+*.log
+
 # Rulebook - ignore runtime data, keep specs and tasks
 /.rulebook/*
 !/.rulebook/specs/
 !/.rulebook/tasks/
 !/.rulebook/tasks/**/*.md
 !/.rulebook/rulebook.json
-
-# Patterns added by @hivellm/rulebook
-# Added at: 2026-03-21T21:07:51.767Z
 
 # PeixotoClaw Specifics
 .agents/brain/
@@ -16,7 +39,6 @@
 *.jpg
 *.jpeg
 *.pdf
-scripts/temp_*
 
 # Security & Secrets
 .env
@@ -24,20 +46,7 @@ scripts/temp_*
 *.pem
 *.key
 
-# Python
-__pycache__/
-*.pyc
-.venv/
-env/
-
 # OS/System
 .DS_Store
 Thumbs.db
-
-# Dev/Build
-node_modules/
-build/
-dist/
-temp/
-tmp/
-*.log
+desktop.ini

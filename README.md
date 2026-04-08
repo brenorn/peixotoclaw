@@ -1,98 +1,83 @@
 # peixotoclaw (Monster Edition) 🦖
 
 > [!CAUTION]
-> **ATENÇÃO IA**: Este projeto utiliza uma arquitetura de Multi-Agentes complexa.
-> LEIA O ARQUIVO [**HANDOVER.md**](file:///d:/OneDrive/aiproj/PeixotoClaw/HANDOVER.md) ANTES DE QUALQUER AÇÃO.
+> **ATENÇÃO IA**: Este projeto utiliza uma arquitetura de Multi-Agentes complexa e reativa.
+> LEIA O ARQUIVO [**HANDOVER.md**](file:///d:/OneDrive/aiproj/PeixotoClaw/docs/management/HANDOVER.md) ANTES DE QUALQUER AÇÃO.
 
 ---
 
 ## 🏗️ Visão Geral
-PeixotoClaw é uma plataforma engine para desenvolvimento automatizado de agentes e automação de processos complexos. Controlado exclusivamente via **Telegram**. Ele combina a inteligência de LLMs de ponta (como Gemini 2.0) com a capacidade de interagir diretamente com o seu sistema de arquivos e executar habilidades especializadas.
+PeixotoClaw é uma plataforma engine para desenvolvimento automatizado de agentes e orquestração de processos complexos. Controlado via **Telegram** ou interfaces especializadas de IA (como Antigravity), ele combina a inteligência de LLMs de ponta com a capacidade de interagir diretamente com o sistema de arquivos e executar habilidades especializadas.
 
 ---
 
 ## ⚡ O que você pode fazer com o PeixotoClaw?
 
-Graças ao seu sistema de **Skills (Hot-Reload)** e **Agent Loop (ReAct)**, o PeixotoClaw é mais do que um chatbot; ele é um assistente operacional:
+### 🤖 Orquestração Reativa (Novo!)
+O sistema agora é capaz de reconhecer intenções de linguagem natural para gerenciar o ciclo de vida de projetos satélites:
+- **Ativação de Contexto**: *"Vamos trabalhar com o projeto [Nome]"*
+- **Criação de Dossiê**: *"Vamos iniciar o projeto [Nome]"*
+- **Persistência de Artefatos**: Todo planejamento é espelhado automaticamente no dossiê local em `projects/`.
 
-- **💻 Coder**: Peça para ele criar arquivos, refatorar código ou sugerir arquiteturas. Ele pode ler e escrever no seu sistema de arquivos local.
-- **📄 Analista de Documentos**: Envie um **PDF** via Telegram e peça um resumo, uma análise de dados ou para extrair informações específicas.
-- **🎨 Designer de Brand/Canvas**: Use skills especializadas para gerar diretrizes de marca ou conceitos de design.
-- **🔨 MCP Builder**: Construa e gerencie Model Context Protocols diretamente.
-- **📂 Gestor de Arquivos**: Peça para ele ler diretórios, organizar logs ou ler arquivos de configuração.
-- **🧠 Memória Persistente**: Ele lembra do contexto das suas conversas passadas através de um banco de dados local SQLite.
-
----
-
-## 🛠️ Configuração e Instalação
-
-### 1. Pré-requisitos
-- **Node.js**: v20+ (Recomendado).
-- **Telegram Bot Token**: Crie um no [@BotFather](https://t.me/botfather).
-- **Google AI Studio Key**: Obtenha sua chave do Gemini em [aistudio.google.com](https://aistudio.google.com/).
-
-### 2. Instalação
-```bash
-git clone <seu-repositorio> peixotoclaw
-cd peixotoclaw
-npm install
-```
-
-### 3. Configuração (.env)
-Crie um arquivo `.env` na raiz:
-```env
-TELEGRAM_BOT_TOKEN=seu_token_aqui
-TELEGRAM_ALLOWED_USER_IDS=seu_id_telegram
-GEMINI_API_KEY=sua_chave_gemini
-DEFAULT_PROVIDER=gemini
-MAX_ITERATIONS=5
-```
+### 📂 Habilidades Integradas
+- **💻 Coder**: Criação, refatoração e arquitetura de código local.
+- **📄 Analista de Documentos**: Processamento de PDFs e extração de dados.
+- **🎓 Academic Writer (Nexus V5)**: Motor de mentoria e escrita acadêmica Q1.
+- **🦖 SandecoMaestro**: Coordenação de times de agentes (Architect, Builder, PM).
 
 ---
 
-## 🚀 Como Executar
+## 🚀 Quick Start & Installation
 
-Para iniciar o bot em modo de desenvolvimento (com auto-reload):
-```bash
-npm run dev
-```
+If you just cloned this repository, you **MUST** initialize the environment structure before running the system:
 
-O bot estará pronto assim que você vir `[Telegram] Bot started...` no terminal.
+1. **Run Bootstrap**:
+   ```bash
+   python scripts/bootstrap.py
+   ```
+   *This will create the necessary folders (`projects/`, `data/`, etc.) and set up your `.env` template.*
+
+2. **Configure Credentials**:
+   Edit the generated `.env` file with your API keys (Gemini, Claude, Telegram, etc.).
+
+3. **Install Dependencies**:
+   ```bash
+   npm install
+   cd dashboard && npm install
+   ```
+
+4. **Launch**:
+   Run `peixotoclaw.bat` or `npm run ui:dev`.
+
+---
+
+## 🚀 Como Iniciar uma Sessão (Tutorial)
+
+Para começar a trabalhar de forma eficiente, você possui duas formas de interação:
+
+### 1. Comandos de Barra (Slash Commands)
+Digite `/` no chat para ver a lista de habilidades rápidas:
+- `/project-activate`: Para retomar um dossiê de projeto existente.
+- `/project-create`: Para iniciar um novo dossiê de planejamento.
+- `/sandeco-maestro`: Para orquestrar tarefas complexas com múltiplos agentes.
+
+### 2. Gatilhos de Linguagem Natural (Recomendado)
+Eu (seu assistente) estou treinado para reagir proativamente. Você pode simplesmente dizer:
+- *"Vamos iniciar o projeto Simulador-Obras"* -> Eu criarei a pasta, os planos (Fast/Secure/Scalable) e as tarefas iniciais em **Português**.
+- *"Vamos trabalhar com o projeto MAS-Doctorate"* -> Eu limparei o ambiente e carregarei todo o contexto histórico do projeto.
 
 ---
 
-## 📂 Habilidades (Skills)
-
-As habilidades são o "cérebro" variável do PeixotoClaw. Elas estão localizadas em `.agents/skills/`. Cada pasta contém um arquivo `SKILL.md` que o bot carrega dinamicamente.
-
-**Habilidades Integradas:**
-- `Coder`, `Skill-Creator`, `PDF-Analyzer`, `Webapp-Testing`, e mais 14!
-
-**Para criar uma nova skill:**
-Basta criar uma pasta em `.agents/skills/MinhaSkill` e adicionar um arquivo `SKILL.md` com o frontmatter YAML definindo nome e descrição. O bot a reconhecerá instantaneamente sem reiniciar.
-
----
-
-## 🏗️ Arquitetura
-
-- **Core ReAct**: O bot não apenas responde, ele "pensa" e "age" (Thought -> Action -> Observation).
-- **SQLite Database**: Armazenamento local de mensagens e conversas.
-- **Provider System**: Facilmente intercambiável entre Gemini, DeepSeek ou outros provedores locais.
-- **Multimodal**: Suporte nativo para leitura de PDFs e infraestrutura para Voz e Imagem.
-
----
+## 📂 Estrutura de Diretórios
+- `.agents/`: Motor, regras globais e habilidades.
+- `projects/`: **Dossiês dos Projetos** (Históricos, Planos, Documentos e Contexto).
+- `scripts/`: Utilitários de gerenciamento e ciclo de vida.
+- `docs/`: Documentação técnica e manuais de Handover.
 
 ---
 
 ## 🎖️ Créditos e Agradecimentos
+- **Prof. Sandeco** ([@sandeco](https://github.com/sandeco)): Pela visão mestre e mentoria.
+- **Breno Peixoto**: Desenvolvimento e Manutenção.
 
-Este projeto é o resultado de uma evolução colaborativa e inspiração técnica. Agradecimentos especiais a:
-
-- **Prof. Sandeco** ([@sandeco](https://github.com/sandeco)): Pela visão mestre, mentoria e por impulsionar os limites da automação com agentes.
-- **Diego** ([@eudiegoaragao](https://github.com/eudiegoaragao)): Pela colaboração intensa na pesquisa e no desenvolvimento das bases deste ecossistema.
-- **Marcos Silva** ([@mmarcosab](https://github.com/mmarcosab)): Pelas valiosas contribuições teóricas e insights técnicos compartilhados via Medium.
-
----
-
-**Mantenedor:** Breno Peixoto
 **Status:** Alpha v1.0 - PeixotoClaw Monster Ready 🚀🦾
