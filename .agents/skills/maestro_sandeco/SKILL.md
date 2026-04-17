@@ -4,59 +4,39 @@ description: 'Executa uma lista de skills em sequência ou em paralelo conforme 
 argument-hint: 'lista de skills separadas por vírgula, ex: help, brainstorming'
 ---
 
-# Skill: SandecoMaestro (Orquestração Multi-Agente)
+# Skill: SandecoMaestro (Orquestração Multi-Agente Global)
 
 Esta habilidade permite ao Antigravity coordenar um esquadrão de agentes inteligentes atuando de forma simultânea no mesmo projeto, reproduzindo a lógica de "Times de Agentes" em ambientes colaborativos.
 
-## Configuração do Ambiente
+## Configuração do Ambiente (RAIZ DO PROJETO)
 
-O esquadrão utiliza uma pasta oculta dentro do diretório desta skill para se comunicar:
+Diferente de skills locais, o Maestro opera na **RAIZ do projeto** para garantir que todos os agentes (arquitetos, executores, auditores) compartilhem o mesmo contexto:
 
-- `.agent/skills/sandeco-maestro/.antigravity/equipe/registro_atividades.json` → Registro mestre de atividades, estados e pré-requisitos.
-- `.agent/skills/sandeco-maestro/.antigravity/equipe/caixa_entrada/` → Comunicações individuais entre agentes (.msg).
-- `.agent/skills/sandeco-maestro/.antigravity/equipe/aviso_geral.msg` → Comunicados globais para todo o esquadrão.
-- `.agent/skills/sandeco-maestro/.antigravity/equipe/travas/` → Semáforos para impedir edição simultânea de arquivos.
-
-# IMPORTANTE
-1. Nunca crie uma nova pasta `.antigravity` na raiz do projeto.
-Utilize a pasta `.antigravity` que fica dentro do diretório desta skill (`.agent/skills/sandeco-maestro/.antigravity/`).
-2. Quando começar um novo processo de orquestração sempre limpe 
-- registro_atividades.json
-- aviso_geral.msg
-- travas 
-- caixa_entrada
+- `./.antigravity/equipe/registro_atividades.json` → Registro mestre de atividades, estados e pré-requisitos.
+- `./.antigravity/equipe/caixa_entrada/` → Comunicações individuais entre agentes (.msg).
+- `./.antigravity/equipe/aviso_geral.msg` → Comunicados globais para todo o esquadrão.
+- `./.antigravity/equipe/travas/` → Semáforos para impedir edição simultânea de arquivos.
 
 ## Papéis do Esquadrão
 
 1. **Condutor (SandecoMaestro)**: O líder do time. Decompõe o problema, distribui responsabilidades e valida planos de ação.
 2. **Projetista**: Define a estrutura e padrões arquiteturais antes da codificação.
-3. **Executor (Frontend/Backend/BD)**: Realiza atividades técnicas específicas.
-4. **Comunicador**: Criação de marca, identidade visual, copywriting e design de páginas.
-5. **Explorador**: Busca de informações, documentação e análise de contexto.
-6. **Auditor (Advogado do Diabo)**: Procura falhas, bugs e vulnerabilidades de segurança.
+3. **Executor**: Realiza atividades técnicas específicas.
+4. **Comunicador**: Criação de marca, identidade visual, e design.
+5. **Auditor**: Procura falhas, bugs e vulnerabilidades.
 
 ## Protocolo de Orquestração Avançada
 
 ### 1. Modo de Planejamento (Gatekeeping)
+Cada agente deve submeter um **Plano de Ação** à caixa de entrada do Condutor antes de alterações críticas. O Condutor responde com `APROVADO`.
 
-Antes de efetuar alterações relevantes, cada agente deve submeter um **Plano de Ação** à caixa de entrada do SandecoMaestro.
+### 2. Sincronização e Pré-requisitos
+As atividades em `registro_atividades.json` possuem `pre_requisitos`. Um agente só assume uma tarefa se os pré-requisitos estiverem `CONCLUIDO`.
 
-- O agente permanece em modo `SOMENTE_LEITURA` ou `PLANEJAMENTO` até que o SandecoMaestro responda com um comunicado de `APROVADO`.
-
-### 2. Comunicação e Difusão (Broadcast)
-
-- **Comunicação Direta**: Coordenação 1-a-1 entre executores.
-- **Comunicado Geral**: SandecoMaestro pode escrever em `aviso_geral.msg` para transmitir novas orientações a todo o esquadrão simultaneamente.
-
-### 3. Sincronização de Atividades e Pré-requisitos
-
-- As atividades em `registro_atividades.json` podem conter uma lista de `pre_requisitos`. Um agente não deve assumir uma atividade se seus pré-requisitos não estiverem com estado `CONCLUIDO`.
-
-## Regras Fundamentais
-
-- NUNCA editar um arquivo se existir um .lock ativo em `.agent/skills/sandeco-maestro/.antigravity/equipe/travas/`.
-- Ao finalizar uma atividade, o agente deve liberar suas "travas" e notificar o SandecoMaestro.
+## Regras de Ouro
+- SEMPRE cheque `./.antigravity/equipe/travas/` antes de editar arquivos.
+- Ao concluir, libere as travas e atualize o `registro_atividades.json`.
 
 ---
 
-Siga as instruções em `./workflow.md` e os padrões de prompt em `./USO.md`.
+Siga as instruções originais do Professor Sandeco para manter o sistema eficiente e eficaz.

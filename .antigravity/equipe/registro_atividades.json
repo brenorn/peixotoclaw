@@ -1,96 +1,67 @@
 {
+  "projeto": "PeixotoClaw Industrialization - Power Move",
+  "versao": "1.0",
+  "estado_global": "OPERACIONAL",
   "atividades": [
     {
-      "id": 1,
-      "titulo": "Diagnóstico Monster V1",
+      "id": "T-01",
+      "titulo": "Faxina Radical no AGENTS.md (The Purge)",
+      "responsavel": "Projetista",
       "estado": "CONCLUIDO",
-      "plano_validado": false,
-      "responsavel": "Antigravity",
       "pre_requisitos": [],
-      "criado_em": "2026-03-22T07:30:21.853076",
-      "tokens_locais": 12500,
-      "custo_estimado_nuvem": 0.1875
+      "descricao": "Reduzir o arquivo AGENTS.md de 6.000 linhas para < 500 linhas. Manter apenas regras de segurança de TIER 1 e gatilhos de ativação. [SKILL: software-architecture]"
     },
     {
-      "id": 2,
-      "titulo": "Inventário de Regras Local",
+      "id": "T-02",
+      "titulo": "Migração de Regras para Skills Individuais",
+      "responsavel": "Executor",
       "estado": "CONCLUIDO",
-      "plano_validado": false,
-      "responsavel": "Scribe",
-      "pre_requisitos": [],
-      "criado_em": "2026-03-22T07:30:59.916410"
+      "pre_requisitos": ["T-01"],
+      "descricao": "Distribuir as regras de qualidade e formatação que estavam no monólito para os seus respectivos SKILL.md dentro do diretório .agents/skills/. [SKILL: skill-creator]"
     },
     {
-      "id": 3,
-      "titulo": "Ativação Satélite Clínica Mind",
-      "estado": "EM_ANDAMENTO",
-      "plano_validado": true,
-      "responsavel": "@PM",
-      "pre_requisitos": [
-        1,
-        2
-      ],
-      "criado_em": "2026-03-22T10:25:00"
-    },
-    {
-      "id": 4,
-      "titulo": "Design: Projeto Archetype & Gap Analysis",
-      "estado": "PENDENTE",
-      "plano_validado": false,
-      "responsavel": "@Architect",
-      "pre_requisitos": [],
-      "tokens_locais": 0,
-      "custo_estimado_nuvem": 0.0,
-      "criado_em": "2026-04-01T09:11:21.575837"
-    },
-    {
-      "id": 5,
-      "titulo": "Implementação Tier 1: Modelagem",
+      "id": "T-03",
+      "titulo": "Unificação do Barramento Maestro na Raiz",
+      "responsavel": "Projetista",
       "estado": "CONCLUIDO",
-      "plano_validado": false,
-      "responsavel": "@Builder",
-      "pre_requisitos": [
-        4
-      ],
-      "tokens_locais": 0,
-      "custo_estimado_nuvem": 0.0,
-      "criado_em": "2026-04-01T09:19:15.636955"
+      "pre_requisitos": [],
+      "descricao": "Alterar a Skill 'sandeco-maestro' para apontar SEMPRE para a raiz do projeto (.antigravity/equipe). Remover a proibição de uso da raiz. [SKILL: sandeco-maestro]"
     },
     {
-      "id": 6,
-      "titulo": "Teste A/B: Validação de Arquétipos",
+      "id": "T-04",
+      "titulo": "Implementação de Fallback de LLM",
+      "responsavel": "Backend",
       "estado": "CONCLUIDO",
-      "plano_validado": false,
-      "responsavel": "@Builder",
-      "pre_requisitos": [
-        5
-      ],
-      "tokens_locais": 1500,
-      "custo_estimado_nuvem": 0.0225,
-      "criado_em": "2026-04-01T09:36:17.514983"
+      "pre_requisitos": [],
+      "descricao": "Aprimorar o ProviderFactory no src para tentar automaticamente um modelo secundário (ex: DeepSeek) caso o Gemini retorne 503 ou erro de cota."
     },
     {
-      "id": 7,
-      "titulo": "Migração Treinamento para React",
-      "estado": "PENDENTE",
-      "plano_validado": false,
-      "responsavel": "@Architect",
-      "pre_requisitos": [],
-      "tokens_locais": 0,
-      "custo_estimado_nuvem": 0.0,
-      "criado_em": "2026-04-01T19:10:39.984233"
+      "id": "T-05",
+      "titulo": "Auditoria de Segurança e Injeção",
+      "responsavel": "Auditor",
+      "estado": "CONCLUIDO",
+      "pre_requisitos": ["T-01", "T-03"],
+      "descricao": "Executar a skill 'skill-injection-auditor' em todas as skills migradas para garantir que a remoção das regras globais não fragilizou o sistema. [SKILL: skill-injection-auditor]"
     },
     {
-      "id": 8,
-      "titulo": "Fix Tela Branca (Visibilidade)",
-      "estado": "PENDENTE",
-      "plano_validado": false,
-      "responsavel": "@Builder",
-      "pre_requisitos": [],
-      "tokens_locais": 0,
-      "custo_estimado_nuvem": 0.0,
-      "criado_em": "2026-04-01T19:38:38.950510"
+      "id": "T-06",
+      "titulo": "Sincronização Industrial (Nuclear Reset)",
+      "responsavel": "Comunicador",
+      "estado": "CONCLUIDO",
+      "pre_requisitos": ["T-05"],
+      "descricao": "Preparar o README.md final em Português/Inglês e aplicar higiene radical de Oceano Azul no diretório .agents/brain e na raiz do repositório."
     }
   ],
-  "integrantes": []
+  "logs": [
+    {
+      "data": "2026-04-16T21:32:15Z",
+      "agente": "Auditor",
+      "mensagem": "Auditado T-05: Análise heurística e semântica concluída. AGENTS.md e novas skills auditadas como SEGURAS. Integridade do sistema preservada."
+    },
+    {
+      "data": "2026-04-16T21:48:30Z",
+      "agente": "Maestro",
+      "mensagem": "Ato Final T-06: Faxina Oceano Azul concluída. Brain sanitizado, redundâncias removidas, .antigravity unificado e README atualizado para Monster Edition. Sistema estabilizado em modo OPERACIONAL."
+    }
+  ]
 }

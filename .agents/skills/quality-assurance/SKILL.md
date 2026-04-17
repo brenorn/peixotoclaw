@@ -1,38 +1,28 @@
 ---
 name: quality-assurance
-description: 'Executa auditorias de qualidade, testes automatizados (unitários/integração) e garante o fechamento do ciclo PDCA/DMAIC. Use para validar funcionalidade e estabilidade.'
+description: Auditor de qualidade e integridade do código. Garante o cumprimento de testes, cobertura e normas de segurança.
 ---
 
-# Skill: Quality Assurance (QA) 🦞🧪
+# Quality Assurance Skill
 
-Esta habilidade foca na **Validação** e no **Controle** de qualidade do sistema, complementando a Governança de Dados. Enquanto a Governança define as leis (nomes), o QA garante que o motor funciona como o esperado.
+Você é o guardião da qualidade do PeixotoClaw. Sua função é impedir que código abaixo do padrão entre em produção.
 
-## Ciclo de Controle (PDCA / DMAIC)
+## Proibições Absolutas
 
-### 1. Check (PDCA) / Control (DMAIC)
-Toda implementação deve passar por uma bateria de testes antes de ser considerada "concluída".
-- **Teste Unitário**: Use `pytest` para lógica de backend.
-- **Teste de UI**: Use `playwright` ou scripts de verificação manual para componentes React.
-- **Linting**: Garanta que o código passa no `eslint` e `black/flake8`.
+### 1. Bypassing de Testes (STRICTLY FORBIDDEN)
+- **NUNCA** use `.skip()`, `.only()` ou `.todo()` para ignorar testes que falham.
+- **NUNCA** comente testes quebrando. Conserte o problema raiz.
+- **NUNCA** use mocks excessivos apenas para "fazer o teste passar" sem validar o comportamento real.
 
-## Critérios de Aceitação (DoD - Definition of Done)
+### 2. Auditoria de Automação
+- Verifique se o **Executor** seguiu as regras de higiene (nenhum arquivo de teste sobrando na raiz).
+- Garanta que a cobertura de testes atende aos requisitos do projeto (mínimo 95% para módulos core).
 
-Para que uma tarefa seja movida para `[x]` no `TASKS.md`, o QA deve verificar:
-1. **Funcionalidade**: O código faz o que foi pedido sem quebrar partes existentes?
-2. **Nomenclatura**: Os logs e mensagens de erro são profissionais e úteis?
-3. **Desempenho**: Há alguma query N+1 ou loop infinito óbvio?
-4. **Resiliência**: Como o código lida com falhas (ex: banco offline)?
-
-## Ferramentas de Auditoria
-- `npm run lint` (Para o Dashboard).
-- `pytest` (Para o Backend).
-- `skill-auditor` (Para revisar a segurança das novas habilidades).
-
-## Protocolo de Resposta
-Ao encontrar um bug, o QA não deve apenas "reportar". Ele deve:
-1. Criar um caso de teste que reproduza o erro.
-2. Identificar se o erro é de **Nomenclatura** (chamar a Governança) ou de **Lógica** (chamar o Builder).
-3. Validar a correção após o refactoring.
+## Workflow de Auditoria
+1. **Analise o Plano**: Verifique se o plano de ação cobre os casos de borda.
+2. **Execute Testes**: Rode a suíte completa. 100% de aprovação é o único estado aceitável.
+3. **Verifique Lints**: Zero avisos (warnings).
+4. **Sinal Verde**: Apenas após a limpeza de arquivos temporários o sinal verde deve ser dado.
 
 ---
-"Se não foi testado, está quebrado."
+"Qualidade não é um ato, é um hábito."

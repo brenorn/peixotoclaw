@@ -61,7 +61,7 @@ def main():
         run_command(f"git branch -D {branch_name}")
         sys.exit(1)
     
-    print("Privacy Audit: PASSED ✅")
+    print("Privacy Audit: PASSED [OK]")
     
     # 5. Commit and Push
     commit_msg = f"feat(workspace): industrial sync branch {timestamp} - clean privacy & complete assets"
@@ -75,7 +75,6 @@ def main():
         print("\n--- SYNC COMPLETED SUCCESSFULLY ---")
         print(f"Your workspace is now safe on branch: {branch_name}")
         print(f"Merge Link: https://github.com/brenorn/peixotoclaw/compare/{branch_name}")
-        print("Note: Merge to 'main' ONLY after manual review on GitHub.")
     else:
         print("\n!!! PUSH FAILED !!!")
         print("Please check your internet connection and Git permissions.")

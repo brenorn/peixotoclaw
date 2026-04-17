@@ -7,7 +7,7 @@
 ---
 
 ## 🏗️ Visão Geral
-PeixotoClaw é uma plataforma engine para desenvolvimento automatizado de agentes e orquestração de processos complexos. Controlado via **Telegram** ou interfaces especializadas de IA (como Antigravity), ele combina a inteligência de LLMs de ponta com a capacidade de interagir diretamente com o sistema de arquivos e executar habilidades especializadas.
+PeixotoClaw é uma plataforma engine para desenvolvimento automatizado de agentes e orquestração de processos complexos. Agora em sua **Versão Industrial (Lean)**, ele utiliza uma infraestrutura ultra-leve baseada nos protocolos do Professor Sandeco, garantindo mínima latência e máxima eficácia.
 
 ---
 
@@ -23,7 +23,9 @@ O sistema agora é capaz de reconhecer intenções de linguagem natural para ger
 - **💻 Coder**: Criação, refatoração e arquitetura de código local.
 - **📄 Analista de Documentos**: Processamento de PDFs e extração de dados.
 - **🎓 Academic Writer (Nexus V5)**: Motor de mentoria e escrita acadêmica Q1.
-- **🦖 SandecoMaestro**: Coordenação de times de agentes (Architect, Builder, PM).
+- **🦖 SandecoMaestro (Raiz)**: Orquestração de times de agentes (Architect, Builder, PM) agora unificada na raiz para sincronia total.
+- **⚡ Lean Engine**: Arquitetura AGENTS.md reduzida em 98% para foco total na execução.
+- **🛡️ Auto-Fallback**: Alternância automática de provedores (Gemini -> DeepSeek) para resiliência 24/7.
 
 ---
 
