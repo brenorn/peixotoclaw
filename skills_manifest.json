@@ -1,0 +1,527 @@
+{
+  "skills": [
+    {
+      "id": "academic-writer",
+      "name": "academic-writer",
+      "description": "Escritor-Orientador Ph.D. (Nexus v5.2): Motor de Mentoria e Escrita Científica. Expande e blinda teses Magnum preservando a voz original e injetando rigor Qualis A1 (2025/2026).",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\academic-writer\\SKILL.md"
+    },
+    {
+      "id": "agent-browser",
+      "name": "agent-browser",
+      "description": "Automação de navegador via CLI. Use para interagir com sites, preencher formulários, capturar screenshots e extrair dados de aplicações web ou Electron.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\agent-browser\\SKILL.md"
+    },
+    {
+      "id": "algorithmic-art",
+      "name": "algorithmic-art",
+      "description": "Criação de arte algorítmica usando p5.js, flow fields e sistemas de partículas com sementes de aleatoriedade.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\algorithmic-art\\SKILL.md"
+    },
+    {
+      "id": "architecture-blueprint-generator",
+      "name": "architecture-blueprint-generator",
+      "description": "Gerador de blueprints arquiteturais detalhados. Analisa o código e gera diagramas e padrões de implementação.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\architecture-blueprint-generator\\SKILL.md"
+    },
+    {
+      "id": "architecture-guardian",
+      "name": "architecture-guardian",
+      "description": "Guardião da integridade técnica e arquitetural do projeto Arremate.AI. Use esta skill antes de propor mudanças estruturais, novas tecnologias ou implementações de features complexas para garantir conformidade com o PLAN.md e melhores práticas de segurança.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\architecture-guardian\\SKILL.md"
+    },
+    {
+      "id": "autoresearch-diagrams",
+      "name": "autoresearch-diagrams",
+      "description": "Otimização auto-melhorável de diagramas usando o padrão Karpathy. Gera, avalia e refina prompts de diagramas Mermaid.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\autoresearch-diagrams\\SKILL.md"
+    },
+    {
+      "id": "avaliacoes",
+      "name": "avaliacoes",
+      "description": "Auditor de qualidade final e UX do Arremate.AI. Use esta skill para validar se uma feature entregue pelo feature-builder atende aos critérios de aceite, se a interface está polida e se o fluxo de usuário faz sentido.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\avaliacoes\\SKILL.md"
+    },
+    {
+      "id": "brainstorming",
+      "name": "brainstorming",
+      "description": "Parceiro para exploração de ideias, definição de escopo e decisões arquiteturais de alto nível.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\brainstorming\\SKILL.md"
+    },
+    {
+      "id": "brand-guidelines",
+      "name": "brand-guidelines",
+      "description": "Aplica cores e tipografias oficiais da Anthropic (ou marca definida) em qualquer artefato visual do projeto.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\brand-guidelines\\SKILL.md"
+    },
+    {
+      "id": "canvas-design",
+      "name": "canvas-design",
+      "description": "Criação de artes visuais premium (PNG/PDF) seguindo filosofias modernas de design para posters e documentos estáticos.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\canvas-design\\SKILL.md"
+    },
+    {
+      "id": "capes-power-research",
+      "name": "capes-power-research",
+      "description": "Ferramenta avançada de busca e download no portal de Periódicos CAPES com suporte a filtros Q1/Q2 e login CAFe.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\capes-power-research\\SKILL.md"
+    },
+    {
+      "id": "caveman",
+      "name": "caveman",
+      "description": "Modo de comunicação ultra-comprimido. Reduz o uso de tokens em ~75% falando como um 'homem das cavernas' inteligente, mantendo total precisão técnica. Ultra-compressed communication mode. Cuts token usage ~75% by speaking like caveman while keeping full technical accuracy. Supports intensity levels: lite, full (default), ultra, wenyan-lite, wenyan-full, wenyan-ultra. Use when user says \"caveman mode\", \"talk like caveman\", \"use caveman\", \"less tokens\", \"be brief\", or invokes /caveman. Also auto-triggers when token efficiency is requested.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\caveman\\SKILL.md"
+    },
+    {
+      "id": "claude-api",
+      "name": "claude-api",
+      "description": "Assistente especializado em construir aplicações usando o SDK da Anthropic ou Claude API.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\claude-api\\SKILL.md"
+    },
+    {
+      "id": "Coder",
+      "name": "coder",
+      "description": "Especialista em engenharia de software e implementação técnica. Focado em código limpo, padrões de projeto e integridade do repositório.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\Coder\\SKILL.md"
+    },
+    {
+      "id": "commit-scribe",
+      "name": "commit-scribe",
+      "description": "Analisa mudanças em PLAN.md, TASKS.md e specs/ para gerar mensagens de commit profissionais e precisas. Utilize após finalização de tarefas ou marcos do projeto, integrando-se ao PipelineMaestro.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\commit-scribe\\SKILL.md"
+    },
+    {
+      "id": "cyber-production-guardian",
+      "name": "cyber-production-guardian",
+      "description": "Especialista em Hardening de Produção, Auditoria LGPD e Segurança Ofensiva (Hacking Ético). Ative esta skill antes de deploys, ao revisar configurações de infraestrutura ou para garantir compliance de dados sensíveis.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\cyber-production-guardian\\SKILL.md"
+    },
+    {
+      "id": "data-governance",
+      "name": "data-governance",
+      "description": "Garante a consistência de nomenclatura (variáveis, tabelas, colunas), integridade de esquemas e padrões de importação. Use para validar qualquer alteração de código ou banco de dados antes da implementação real.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\data-governance\\SKILL.md"
+    },
+    {
+      "id": "data-intelligence",
+      "name": "data-intelligence",
+      "description": "Skill focada em análise preditiva de dados de obra, governança de dados multitenant e higiene de RAG para o ecossistema PeixotoClaw.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\data-intelligence\\SKILL.md"
+    },
+    {
+      "id": "db-maestro-enterprise",
+      "name": "db-maestro-enterprise",
+      "description": "Skill para gestão de bancos de dados multitenant, segurança IAM e isolamento de dados de nível corporativo no ecossistema PeixotoClaw.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\db-maestro-enterprise\\SKILL.md"
+    },
+    {
+      "id": "design-patterns",
+      "name": "cloud-design-patterns",
+      "description": "Cloud design patterns for distributed systems architecture covering 42 industry-standard patterns across reliability, performance, messaging, security, and deployment categories. Use when designing, reviewing, or implementing distributed system architectures.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\design-patterns\\SKILL.md"
+    },
+    {
+      "id": "design-system-extractor",
+      "name": "design-system-extractor",
+      "description": "Especialista em construção de Design Systems e Pattern Libraries. Analisa HTML, CSS e JS de sites de referência (ex: saveweb2zip) e gera um arquivo `design-system.html` único que documenta todo o sistema, preservando fielmente o visual e comportamento originais. Ative sempre que o usuário fornecer pastas de referência visual ou pedir para \"extrair padrões de design\".",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\design-system-extractor\\SKILL.md"
+    },
+    {
+      "id": "django-db-specialist",
+      "name": "django-db-specialist",
+      "description": "Especialista em Schema Design e Performance em Django + PostgreSQL. Foca em Fat Models, Skinny Views e Stateless Binaries (GCS Buckets).",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\django-db-specialist\\SKILL.md"
+    },
+    {
+      "id": "django-tailwind-expert",
+      "name": "django-tailwind-expert",
+      "description": "Especialista em desenvolvimento frontend com Tailwind CSS e Django Template Language (DTL). Use esta skill para criar, estilizar e refatorar interfaces de usuário (UI/UX) responsivas, acessíveis e com visual moderno no projeto Django.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\django-tailwind-expert\\SKILL.md"
+    },
+    {
+      "id": "doc-coauthoring",
+      "name": "doc-coauthoring",
+      "description": "Guide users through a structured workflow for co-authoring documentation. Use when user wants to write documentation, proposals, technical specs, decision docs, or similar structured content. This workflow helps users efficiently transfer context, refine content through iteration, and verify the doc works for readers. Trigger when user mentions writing docs, creating proposals, drafting specs, or similar documentation tasks.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\doc-coauthoring\\SKILL.md"
+    },
+    {
+      "id": "documentation-scribe",
+      "name": "documentation-scribe",
+      "description": "Escritor técnico do projeto Arremate.AI. Use esta skill para atualizar o PLAN.md, criar Memorial Descritivo, documentar APIs, gerar arquivos README e garantir que a documentação técnica reflita o estado atual do código.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\documentation-scribe\\SKILL.md"
+    },
+    {
+      "id": "docx",
+      "name": "docx",
+      "description": "Criação, leitura e manipulação profissional de documentos Word (.docx) com formatação complexa e letterheads.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\docx\\SKILL.md"
+    },
+    {
+      "id": "editor-video",
+      "name": "srt-video-cutter",
+      "description": "Agente de edição automática de vídeo via análise de legendas SRT. Use esta skill sempre que o usuário quiser limpar, editar ou cortar um vídeo removendo erros de fala, repetições e silêncios. Triggers incluem: upload de arquivo .srt, menções a \"cortar vídeo\", \"editar vídeo\", \"remover erros de fala\", \"limpar legenda\", \"repetições no vídeo\", \"silêncios\", ou qualquer pedido para analisar legendas e gerar pontos de corte. Também use quando o usuário mencionar \"edição automática\", \"cortes automáticos\", ou quiser processar legendas do Whisper para identificar trechos ruins. O output é sempre um JSON com timestamps dos trechos a remover.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\editor-video\\SKILL.md"
+    },
+    {
+      "id": "extract-design-system",
+      "name": "extract-design-system",
+      "description": "Extrai primitivas de design (tokens, cores, tipografia) de sites públicos e gera arquivos iniciais para o seu projeto.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\extract-design-system\\SKILL.md"
+    },
+    {
+      "id": "feature-builder",
+      "name": "feature-builder",
+      "description": "Implementador de alta performance para o Arremate.AI. Use esta skill para escrever código limpo (Python/Django), criar testes unitários (Pytest), refatorar módulos e aplicar padrões de código definidos pela arquitetura. Focado em execução técnica rápida e correta.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\feature-builder\\SKILL.md"
+    },
+    {
+      "id": "find-skills",
+      "name": "find-skills",
+      "description": "Busca e mapeia as habilidades (skills) disponíveis no projeto. Use para descobrir ferramentas ou verificar a integridade da pasta .agents/skills.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\find-skills\\SKILL.md"
+    },
+    {
+      "id": "frontend-design",
+      "name": "frontend-design",
+      "description": "Criação de interfaces web de alto padrão (React/Tailwind) que evitam a estética genérica de IA.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\frontend-design\\SKILL.md"
+    },
+    {
+      "id": "gestao-da-manutencao",
+      "name": "gestao-da-manutencao",
+      "description": "Gera e mantém documentação de manutenção modular e progressiva para qualquer projeto de software, incluindo runbooks, onboarding técnico, guias para leigos e pasta manutencao.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\gestao-da-manutencao\\SKILL.md"
+    },
+    {
+      "id": "github-sync",
+      "name": "github-sync",
+      "description": "Automate safe, industrial synchronization of the PeixotoClaw workspace to GitHub. This skill implements the \"Nuclear Reset\" pattern with safety branching to prevent data loss and ensure privacy. Use this skill when the user wants to \"subir para o git\", \"sincronizar workspace\", or needs a clean \"re-upload\" that strictly respects .gitignore and privacy rules.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\github-sync\\SKILL.md"
+    },
+    {
+      "id": "gsap",
+      "name": "gsap",
+      "description": "Referência de animação GSAP. Cobre timelines, easing, staggers e performance para criações visuais no HyperFrames.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\gsap\\SKILL.md"
+    },
+    {
+      "id": "gsd-engine",
+      "name": "gsd-engine",
+      "description": "Motor de execução incremental e anti-congelamento. Use quando lidar com arquivos grandes (>300 linhas), projetos legados complexos ou fases de planejamento extensas. Garante que cada descoberta seja registrada imediatamente, evitando perda de contexto.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\gsd-engine\\SKILL.md"
+    },
+    {
+      "id": "house-cleaner",
+      "name": "house-cleaner",
+      "description": "Especialista em organização e faxina de projetos. Use para reestruturar diretórios, mover arquivos para pastas lógicas (src, data, config, tests, reports), remover duplicidades e garantir a hermeticidade do projeto. Acione sempre que o usuário pedir para \"arrumar a casa\", \"limpar o projeto\" ou \"organizar os arquivos\".",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\house-cleaner\\SKILL.md"
+    },
+    {
+      "id": "hyperframes",
+      "name": "hyperframes",
+      "description": "Criação de composições de vídeo, animações, legendas e narrações usando HTML. Ideal para vídeos reativos a áudio e apresentações dinâmicas.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\hyperframes\\SKILL.md"
+    },
+    {
+      "id": "hyperframes-cli",
+      "name": "hyperframes-cli",
+      "description": "Ferramenta de linha de comando para o HyperFrames: renderização, preview, transcrição de áudio e gerenciamento de composições.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\hyperframes-cli\\SKILL.md"
+    },
+    {
+      "id": "hyperframes-registry",
+      "name": "hyperframes-registry",
+      "description": "Instalação e configuração de blocos e componentes pré-fabricados para projetos HyperFrames.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\hyperframes-registry\\SKILL.md"
+    },
+    {
+      "id": "internal-comms",
+      "name": "internal-comms",
+      "description": "Criação de comunicações internas corporativas (status reports, newsletters, incidentes) seguindo padrões da empresa.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\internal-comms\\SKILL.md"
+    },
+    {
+      "id": "logic-deep-learning",
+      "name": "logic-deep-learning",
+      "description": "Performs exhaustive analysis of a directory to extract functional logic, architectural patterns, and reusable code blocks. Ideal for \"copy-and-adapt\" scenarios where existing complex logic must be mapped to new project requirements.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\logic-deep-learning\\SKILL.md"
+    },
+    {
+      "id": "maestro_sandeco",
+      "name": "sandeco-maestro",
+      "description": "Executa uma lista de skills em sequência ou em paralelo conforme a necessidade informada pelo usuário.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\maestro_sandeco\\SKILL.md"
+    },
+    {
+      "id": "master-skill",
+      "name": "master-skill",
+      "description": "Orquestrador mestre de frameworks e skills de desenvolvimento com IA. ATIVE ESTE SKILL EXCLUSIVAMENTE quando o usuário chamar o comando /master-skill. NÃO ative em nenhuma outra situação — este skill responde APENAS ao comando explícito /master-skill.  Quando ativado, interpreta a instrução fornecida após o comando e executa: - Inicialização via `/master-skill init` - Instalação de frameworks de IA no projeto atual: BMad Method, Spec-Kit, Antigravity Kit - Busca e instalação de skills de uma pasta externa no projeto atual  Exemplos de ativação (SOMENTE via /master-skill): - /master-skill init - /master-skill instale o BMad - /master-skill instale o Antigravity Kit - /master-skill configure o Spec-Kit nesse projeto - /master-skill quero a skill de brainstorm - /master-skill instale a skill de code-review - /master-skill liste as skills disponíveis",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\master-skill\\SKILL.md"
+    },
+    {
+      "id": "maverick-simulator",
+      "name": "maverick-simulator",
+      "description": "Simulação industrial holística para prever falhas de segurança, gargalos de produtividade e riscos em fluxos de projeto.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\maverick-simulator\\SKILL.md"
+    },
+    {
+      "id": "mcp-builder",
+      "name": "mcp-builder",
+      "description": "Guia para criação de servidores MCP (Model Context Protocol) de alta qualidade em Python ou Node.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\mcp-builder\\SKILL.md"
+    },
+    {
+      "id": "pdf",
+      "name": "pdf",
+      "description": "Manipulação completa de arquivos PDF: extração de texto, tabelas, OCR, mesclagem e preenchimento de formulários.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\pdf\\SKILL.md"
+    },
+    {
+      "id": "pipeline-benchmarker",
+      "name": "pipeline-benchmarker",
+      "description": "Analisa criticamente os resultados do pipeline de busca de licitações (Estrategista → Triador → Curador). Use esta skill após uma execução do pipeline para gerar métricas de precisão, identificar falsos positivos/negativos e sugerir ajustes na estratégia de busca.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\pipeline-benchmarker\\SKILL.md"
+    },
+    {
+      "id": "pipeline-tester",
+      "name": "pipeline-tester",
+      "description": "Executa testes de precisão e regressão no pipeline de agentes (Estrategista → Triador → Curador). Use quando o usuário reclamar de resultados faltantes, falsos positivos ou quando quiser validar se uma mudança nos prompts melhorou a acurácia do sistema. Esta skill compara os itens encontrados pelo pipeline com um \"Golden Set\" de IDs esperados.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\pipeline-tester\\SKILL.md"
+    },
+    {
+      "id": "pptx",
+      "name": "pptx",
+      "description": "Criação e edição profissional de apresentações e decks de slides (.pptx) com foco em design e fluxo narrativo.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\pptx\\SKILL.md"
+    },
+    {
+      "id": "prd-manager",
+      "name": "prd-manager",
+      "description": "Use esta skill para criar, analisar ou melhorar um PRD (Product Requirements Document) para projetos de software. Acione quando o usuário mencionar: \"criar PRD\", \"fazer PRD\", \"documento de requisitos\", \"escrever PRD\", \"analisar PRD\", \"melhorar PRD\", \"revisar PRD\", \"preciso de um PRD\", \"requisitos do produto\", \"product requirements document\", \"visão geral do produto\", \"levantamento de requisitos\", ou ao descrever um projeto de app/software que precisa estruturar requisitos. Também acione em \"o que falta no meu PRD?\" ou \"meu PRD está bom?\". Modos: (1) CRIAR — gerar PRD completo a partir de ideia ou briefing, (2) ANALISAR — avaliar PRD existente com feedback estruturado e placar, (3) MELHORAR — reescrever seções fracas, (4) DESCOBERTA — fazer perguntas para extrair requisitos antes de escrever.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\prd-manager\\SKILL.md"
+    },
+    {
+      "id": "project-bootstrapper",
+      "name": "project-bootstrapper",
+      "description": "Automates the setup of new projects following the SaaS Factory methodology. It initializes the .agents/ folder, installs the Survival Kit, and creates memory files.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\project-bootstrapper\\SKILL.md"
+    },
+    {
+      "id": "project-manager",
+      "name": "project-manager",
+      "description": "Gerente tático do projeto Arremate.AI. Responsável pela manutenção do TASKS.md e CURRENT_CONTEXT.md. Use esta skill para atualizar o progresso, priorizar tarefas, evitar scope creep e garantir que o contexto da sessão atual esteja documentado.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\project-manager\\SKILL.md"
+    },
+    {
+      "id": "quality-assurance",
+      "name": "quality-assurance",
+      "description": "Auditor de qualidade e integridade do código. Garante o cumprimento de testes, cobertura e normas de segurança.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\quality-assurance\\SKILL.md"
+    },
+    {
+      "id": "refactor-twin-brain",
+      "name": "refactor-twin-brain",
+      "description": "Especialista em refatoração e limpeza de projetos legados ou em produção. Utiliza a lógica Twin-Brain para separar a análise de preservação (lógica/nomes) da execução técnica, garantindo que importações e constantes core não sejam destruídas. Use sempre que o usuário pedir para \"limpar\", \"refatorar\", \"organizar código\" ou \"migrar pastas\".",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\refactor-twin-brain\\SKILL.md"
+    },
+    {
+      "id": "remotion-to-hyperframes",
+      "name": "remotion-to-hyperframes",
+      "description": "Traduz composições de vídeo feitas em Remotion (React) para o formato HTML do HyperFrames.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\remotion-to-hyperframes\\SKILL.md"
+    },
+    {
+      "id": "reversa",
+      "name": "reversa",
+      "description": "Ponto de entrada principal do Reversa. Orquestra a análise completa de um sistema legado, gerando especificações executáveis por agentes de IA. Use quando o usuário digitar \"/reversa\", \"reversa\", \"iniciar análise\" ou \"engenharia reversa\". É o primeiro skill a ser chamado em qualquer sessão.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\reversa\\SKILL.md"
+    },
+    {
+      "id": "reversa-archaeologist",
+      "name": "reversa-archaeologist",
+      "description": "Analisa profundamente o código do projeto legado módulo a módulo — extrai algoritmos, fluxos de controle, estruturas de dados e dicionário de dados. Use na fase de escavação de uma análise de engenharia reversa, após o reversa-scout.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\reversa-archaeologist\\SKILL.md"
+    },
+    {
+      "id": "reversa-architect",
+      "name": "reversa-architect",
+      "description": "Sintetiza a análise do projeto legado em documentação arquitetural completa — diagramas C4, ERD completo, mapa de integrações e Spec Impact Matrix. Use na fase de interpretação após o reversa-detective.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\reversa-architect\\SKILL.md"
+    },
+    {
+      "id": "reversa-data-master",
+      "name": "reversa-data-master",
+      "description": "Documenta completamente o banco de dados do projeto legado — tabelas, relacionamentos, constraints, triggers, procedures e ERD completo. Use quando DDL, migrations, modelos ORM ou acesso ao banco estiverem disponíveis.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\reversa-data-master\\SKILL.md"
+    },
+    {
+      "id": "reversa-design-system",
+      "name": "reversa-design-system",
+      "description": "Extrai e documenta o sistema de design do projeto legado — paleta de cores, tipografia, espaçamentos, tokens e componentes a partir de CSS, arquivos de tema e screenshots. Use quando arquivos de estilo ou screenshots de interface estiverem disponíveis.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\reversa-design-system\\SKILL.md"
+    },
+    {
+      "id": "reversa-detective",
+      "name": "reversa-detective",
+      "description": "Extrai conhecimento de negócio implícito do projeto legado — regras de negócio, ADRs retroativos via Git, máquinas de estado e matriz de permissões. Use na fase de interpretação de uma análise de engenharia reversa.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\reversa-detective\\SKILL.md"
+    },
+    {
+      "id": "reversa-reviewer",
+      "name": "reversa-reviewer",
+      "description": "Revisa criticamente as especificações geradas pelo reversa-writer — encontra inconsistências, reclassifica confiança e gera perguntas para validação humana. Use na fase de revisão de uma análise de engenharia reversa.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\reversa-reviewer\\SKILL.md"
+    },
+    {
+      "id": "reversa-scout",
+      "name": "reversa-scout",
+      "description": "Mapeia a superfície do projeto legado — estrutura de pastas, linguagens, frameworks, dependências e entry points. Use no início de uma análise de engenharia reversa para criar o inventário inicial do projeto.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\reversa-scout\\SKILL.md"
+    },
+    {
+      "id": "reversa-tracer",
+      "name": "reversa-tracer",
+      "description": "Resolve lacunas da análise estática usando execução real do sistema — logs históricos, tracing em tempo real e dados reais (somente leitura). Use quando existirem lacunas 🔴 que requerem o sistema em execução para serem resolvidas.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\reversa-tracer\\SKILL.md"
+    },
+    {
+      "id": "reversa-visor",
+      "name": "reversa-visor",
+      "description": "Documenta a interface do sistema legado a partir de screenshots — extrai componentes, layouts, fluxos de navegação e estados de tela. Use quando screenshots do sistema estiverem disponíveis, sem necessidade de o sistema estar em execução.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\reversa-visor\\SKILL.md"
+    },
+    {
+      "id": "reversa-writer",
+      "name": "reversa-writer",
+      "description": "Gera especificações executáveis do sistema legado como contratos operacionais — specs SDD com rastreabilidade de código, OpenAPI, user stories e code-spec matrix. Use na fase de geração de uma análise de engenharia reversa.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\reversa-writer\\SKILL.md"
+    },
+    {
+      "id": "reversa_frontend",
+      "name": "reversa_frontend",
+      "description": "Engenharia Reversa de Frontends: Mapeamento de fluxos de usuário e descoberta de lógicas de cálculo complexas.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\reversa_frontend\\SKILL.md"
+    },
+    {
+      "id": "revisor-gramatical",
+      "name": "revisor-gramatical",
+      "description": "Sempre que o usuário solicitar correção, revisão ou melhoria de texto em português.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\revisor-gramatical\\SKILL.md"
+    },
+    {
+      "id": "sandeco-token-reduce",
+      "name": "sandeco-token-reduce",
+      "description": "Comprime tokens de prompts usando LLMLingua-2 da Microsoft para reduzir custo e latencia. Use esta skill sempre que o usuario pedir para comprimir um prompt, reduzir tokens, economizar tokens, usar LLMLingua, ou quando um texto for longo demais para enviar a um LLM. Tambem use quando o usuario quiser pre-processar contexto antes de enviar ao Claude. Triggers: \"comprimir\", \"reduzir tokens\", \"economizar tokens\", \"LLMLingua\", \"texto muito longo\", \"compressao de prompt\", \"token compression\", \"compress tokens\", \"inicializar compressao\", \"init token-reduce\".",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\sandeco-token-reduce\\SKILL.md"
+    },
+    {
+      "id": "sandeco-token-reduce-ollama",
+      "name": "sandeco-token-reduce-ollama",
+      "description": "Comprime tokens de prompts usando reescrita generativa com um modelo Ollama local (default: qwen3:8b) para reduzir custo e latencia ao enviar ao Claude. Aceita texto direto, arquivo .txt ou PDF como entrada: extrai o PDF para markdown (via pymupdf4llm), salva o .md ao lado do PDF e comprime o markdown. Use esta skill sempre que o usuario pedir para comprimir/reduzir/economizar tokens E mencionar Ollama, qwen, qwen3, llm local, modelo local, rodar localmente, \"sem BERT\", ou quiser compressao via LLM generativo em vez de classificador. Tambem use quando o usuario quiser pre-processar contexto localmente (incluindo PDFs) antes de enviar ao Claude usando Ollama. Triggers: \"comprimir com ollama\", \"comprimir localmente\", \"ollama compress\", \"qwen3\", \"qwen\", \"reescrever com ollama\", \"resumir com llm local\", \"compressao generativa\", \"pdf com ollama\", \"ler pdf com ollama\", \"inicializar token-reduce-ollama\", \"init token-reduce-ollama\".",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\sandeco-token-reduce-ollama\\SKILL.md"
+    },
+    {
+      "id": "sdd-spec",
+      "name": "sdd-spec",
+      "description": "Cria, itera e avalia specs de features seguindo Spec-Driven Development (SDD). Use esta skill SEMPRE que o usuário quiser especificar, documentar ou detalhar uma feature, funcionalidade, sistema ou comportamento antes de implementar — especialmente quando mencionar palavras como \"spec\", \"especificação\", \"RFC\", \"documento de requisitos\", \"quero planejar antes de codar\", \"preciso de uma spec\", \"escreva os requisitos\", \"defina o comportamento esperado\", \"avalie essa spec\", \"minha spec está boa?\", \"preciso refinar essa spec\" ou qualquer combinação de feature + documentar/especificar/planejar/requisito/comportamento.  Também ativa quando o usuário disser \"quero implementar X\" mas não tiver uma spec ainda — a skill ajuda a criar uma antes de qualquer linha de código.  Entrega: arquivo .md com a spec completa + score de qualidade (0–100) com análise de gaps.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\sdd-spec\\SKILL.md"
+    },
+    {
+      "id": "security-auditor-domain",
+      "name": "security-auditor-domain",
+      "description": "Auditoria de segurança para módulos de domínio, prevenindo vazamento de dados, SQL injection e falhas de isolamento tenant.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\security-auditor-domain\\SKILL.md"
+    },
+    {
+      "id": "skill-auditor",
+      "name": "skill-auditor",
+      "description": "Audit and evaluate other skills for efficiency, efficacy, productivity, and cybersecurity. It identifies prompt injection risks, data leakage, and security flaws, generating a detailed audit report. Trigger this skill when asked to review, secure, or analyze the quality of a specific skill folder.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\skill-auditor\\SKILL.md"
+    },
+    {
+      "id": "skill-creator",
+      "name": "skill-creator",
+      "description": "Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, edit, or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description for better triggering accuracy.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\skill-creator\\SKILL.md"
+    },
+    {
+      "id": "skill-evolver",
+      "name": "skill-evolver",
+      "description": "Analisa falhas de execução registradas no FAILURE_LOG.md e utiliza a skill-creator para gerar \"Failure Patches\" ou novas skills. Use sempre que uma tarefa falhar repetidamente ou quando o usuário solicitar evolução do sistema.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\skill-evolver\\SKILL.md"
+    },
+    {
+      "id": "skill-map",
+      "name": "skill-map",
+      "description": "Mapa de governança que vincula Personas às suas respectivas Skills. Consulte este mapa para saber qual Agente deve assumir cada tarefa no ecossistema PeixotoClaw.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\skill-map\\SKILL.md"
+    },
+    {
+      "id": "skill-security-reviewer",
+      "name": "skill-security-reviewer",
+      "description": "Evaluates other skills for security vulnerabilities such as prompt injection and sensitive information leakage. Use this skill whenever a new skill is created or when an existing skill needs a technical security audit. It requires the path to the skill directory to be analyzed.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\skill-security-reviewer\\SKILL.md"
+    },
+    {
+      "id": "slack-gif-creator",
+      "name": "slack-gif-creator",
+      "description": "Criação de GIFs animados otimizados para o Slack seguindo restrições de tamanho e performance.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\slack-gif-creator\\SKILL.md"
+    },
+    {
+      "id": "software-architecture",
+      "name": "software-architecture",
+      "description": "Especialista em arquitetura de software que cria, avalia, moderniza e extrai arquitetura a partir de specs/SDD para qualquer tipo de projeto (web, mobile, microsserviços, cloud, legado). Use SEMPRE que o usuário mencionar: arquitetura de software, design de sistema, estrutura do projeto, camadas da aplicação, \"como organizar meu backend\", \"preciso escalar\", \"sistema lento/difícil de manter\", \"quero modernizar minha stack\", \"avalie minha arquitetura\", \"microsserviços ou monolito\", ou quando fornecer arquivos SDD/PRD/specs para gerar documentação arquitetural (\"extrai a arquitetura desse documento\", \"gera um architecture.md a partir do meu SDD\", \"tenho um doc de design, gera a arquitetura\"). Entrega Markdown com diagramas Mermaid renderizáveis no GitHub, Notion e Obsidian.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\software-architecture\\SKILL.md"
+    },
+    {
+      "id": "theme-factory",
+      "name": "theme-factory",
+      "description": "Toolkit para estilização de artefatos com temas visuais coordenados (slides, docs, landing pages).",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\theme-factory\\SKILL.md"
+    },
+    {
+      "id": "universal-db-maestro",
+      "name": "universal-db-maestro",
+      "description": "Habilidade global para explorar e analisar bancos de dados Neo4j e Postgres/PostGIS de qualquer projeto satélite. Utilize esta skill sempre que precisar \"estudar a base de dados\", \"consultar o grafo\" ou \"extrair dados espaciais\" de um projeto. Ela detecta automaticamente o .env do projeto ativo e utiliza conectores Python para execução segura.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\universal-db-maestro\\SKILL.md"
+    },
+    {
+      "id": "web-artifacts-builder",
+      "name": "web-artifacts-builder",
+      "description": "Criação de artefatos HTML/JSX complexos com React, Tailwind e shadcn/ui para dashboards e apps interativos.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\web-artifacts-builder\\SKILL.md"
+    },
+    {
+      "id": "web-search",
+      "name": "web-search",
+      "description": "Busca web avançada e extração de conteúdo usando APIs como Tavily e Exa. Ideal para pesquisa e verificação de fatos em tempo real.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\web-search\\SKILL.md"
+    },
+    {
+      "id": "webapp-testing",
+      "name": "webapp-testing",
+      "description": "Toolkit para testes automatizados de aplicações web locais usando Playwright e captura de logs/screenshots.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\webapp-testing\\SKILL.md"
+    },
+    {
+      "id": "website-to-hyperframes",
+      "name": "website-to-hyperframes",
+      "description": "Captura um site completo e o transforma automaticamente em um vídeo promocional ou tour de produto usando HyperFrames. Capture a website and create a HyperFrames video from it. Use when: (1) a user provides a URL and wants a video, (2) someone says \"capture this site\", \"turn this into a video\", \"make a promo from my site\", (3) the user wants a social ad, product tour, or any video based on an existing website, (4) the user shares a link and asks for any kind of video content. Even if the user just pastes a URL — this is the skill to use.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\website-to-hyperframes\\SKILL.md"
+    },
+    {
+      "id": "xlsx",
+      "name": "xlsx",
+      "description": "Manipulação avançada de planilhas (.xlsx, .csv, .tsv): limpeza de dados, fórmulas complexas e geração de gráficos.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\xlsx\\SKILL.md"
+    },
+    {
+      "id": "youtube-creative",
+      "name": "youtube-creative",
+      "description": "Suite completa para YouTube: pesquisa estratégica, roteirização, ganchos magnéticos, tags SEO e descrições otimizadas.",
+      "path": "D:\\OneDrive\\aiproj\\PeixotoClaw\\.agents\\skills\\youtube-creative\\SKILL.md"
+    }
+  ],
+  "total": 87
+}
