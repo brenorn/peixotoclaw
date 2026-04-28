@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find \"D:/OneDrive/aiproj/mind/vpn_mind/src/api/routes\" -name \"cx_routes.py\" -exec head -10 {} \\\\;)",
+      "Bash(xargs grep *)",
+      "Bash(grep -n \"TODO\\\\|FIXME\\\\|NotImplemented\\\\|stub\\\\|placeholder\\\\|pass$\" \"D:/OneDrive/aiproj/move_git/backend/ai_engine/src/domains/nr1/services/optimized_generator.py\")",
+      "Bash(grep -n \"TODO\\\\|NotImplemented\\\\|stub\\\\|placeholder\\\\|mock\\\\|//.*falta\\\\|//.*pendente\" \"D:/OneDrive/aiproj/move_git/backend/src/controllers/nr1/dashboardController.js\")",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); [print\\(k\\) for k in d.keys\\(\\)]\")",
+      "Bash(python3 -c \"import json,sys; d=json.load\\(sys.stdin\\); [print\\(f\\\\\"  {a['id']} — {a['status']} — pre: {a['pre_requisitos']}\\\\\"\\) for a in d['atividades']]\")",
+      "Bash(python -c \"import json; d=json.load\\(open\\('D:/OneDrive/aiproj/PeixotoClaw/.antigravity/equipe/registro_atividades.json', encoding='utf-8'\\)\\); [print\\(f\\\\\"  {a['id']} — {a['status']} — pre: {a['pre_requisitos']}\\\\\"\\) for a in d['atividades']]\")",
+      "Read(//d/OneDrive/aiproj/mind/vpn_mind/src/api/**)",
+      "Read(//d/OneDrive/aiproj/mind/vpn_mind/**)",
+      "Bash(python -c ' *)",
+      "Bash(grep -E \"\\\\.py$|^d\")",
+      "Bash(grep \"~\\\\$\")",
+      "Bash(grep -E \"\\\\.py$\")",
+      "Bash(sed 's/.*\\\\.//')"
+    ],
+    "additionalDirectories": [
+      "D:\\OneDrive\\aiproj\\mind\\vpn_mind\\src\\modules\\dossie"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "rulebook"
+  ]
+}

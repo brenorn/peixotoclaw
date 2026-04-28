@@ -3,6 +3,7 @@ import { GeminiProvider } from './GeminiProvider.js';
 import { DeepSeekProvider } from './DeepSeekProvider.js';
 import { OpenCodeProvider } from './OpenCodeProvider.js';
 import { FallbackProvider } from './FallbackProvider.js';
+import { ClaudeProvider } from './ClaudeProvider.js';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -23,6 +24,12 @@ export class ProviderFactory {
                 break;
             case 'opencode':
                 return new OpenCodeProvider();
+            case 'claude': {
+                const apiKey = process.env.ANTHROPIC_API_KEY || process.env.CLAUDE_API_KEY;
+                if (!apiKey) throw new Error('ANTHROPIC_API_KEY or CLAUDE_API_KEY not found');
+                primary = new ClaudeProvider(apiKey);
+                break;
+            }
             default:
                 throw new Error(`Provider ${type} not supported`);
         }

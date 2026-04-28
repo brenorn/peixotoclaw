@@ -1,4 +1,4 @@
---- 
+---
 name: revisor-gramatical
 description: Sempre que o usuário solicitar correção, revisão ou melhoria de texto em português.
 ---

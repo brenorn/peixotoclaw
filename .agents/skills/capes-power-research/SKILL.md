@@ -1,6 +1,6 @@
 ---
 name: capes-power-research
-description: 'Advanced search and download tool for the CAPES Periodicals portal. Supports deep filtering (Q1/Q2, Last 5 Years, Open Access) and automated CAFe login. Integrated with academic-writer for RAG-ready scientific evidence.'
+description: Ferramenta avançada de busca e download no portal de Periódicos CAPES com suporte a filtros Q1/Q2 e login CAFe.
 ---
 
 # CAPES Power Research 📚🔍☕

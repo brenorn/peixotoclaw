@@ -1,0 +1,16 @@
+{
+  "insights": [
+    {
+      "project": "Global",
+      "content": "Sempre valide sanitização de entrada e compliance LGPD antes de qualquer deploy em produção para evitar brechas de vazamento.",
+      "recorded_at": "D:/OneDrive/aiproj/PeixotoClaw"
+    },
+    {
+      "project": "Global",
+      "content": "Sempre valide sanitização de entrada e compliance LGPD antes de qualquer deploy em produção para evitar brechas de vazamento.",
+      "recorded_at": "D:/OneDrive/aiproj/PeixotoClaw"
+    }
+  ],
+  "security_alerts": [],
+  "performance_tips": []
+}

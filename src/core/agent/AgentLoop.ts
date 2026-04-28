@@ -30,6 +30,7 @@ export class AgentLoop {
             const assistantMessage: ChatMessage = { 
                 role: 'assistant', 
                 content: response.content || '',
+                rawContent: response.rawContent,
                 tool_calls: response.toolCalls 
             };
             currentMessages.push(assistantMessage);

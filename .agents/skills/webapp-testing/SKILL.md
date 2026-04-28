@@ -1,6 +1,6 @@
 ---
 name: webapp-testing
-description: Toolkit for interacting with and testing local web applications using Playwright. Supports verifying frontend functionality, debugging UI behavior, capturing browser screenshots, and viewing browser logs.
+description: Toolkit para testes automatizados de aplicações web locais usando Playwright e captura de logs/screenshots.
 license: Complete terms in LICENSE.txt
 ---
 
@@ -87,6 +87,62 @@ with sync_playwright() as p:
 - Always close the browser when done
 - Use descriptive selectors: `text=`, `role=`, CSS selectors, or IDs
 - Add appropriate waits: `page.wait_for_selector()` or `page.wait_for_timeout()`
+
+## PeixotoClaw Visual Approval Protocol
+
+Use this protocol whenever a task changes frontend behavior, approval flows, generated reports, dashboards, modals, forms, or any user-visible state.
+
+### Required Evidence
+
+For each relevant viewport, capture:
+
+- **Screenshot**: final rendered state after the key user action.
+- **Console logs**: browser errors, warnings, and failed requests.
+- **DOM/action notes**: selectors used and the critical path executed.
+- **Outcome assertion**: the visible condition that proves the workflow worked.
+
+Default viewports:
+
+- Desktop: `1440x900`
+- Mobile: `390x844`
+
+Add tablet only when layout risk is material.
+
+### Standard Smoke Flow
+
+1. Start the app with `scripts/with_server.py` when the server is not already running.
+2. Navigate to the target URL and wait for `networkidle`.
+3. Capture an initial screenshot for reconnaissance when selectors are unknown.
+4. Execute the real user path with role/text selectors when possible.
+5. Capture the final screenshot.
+6. Fail the smoke if any of these occur:
+   - uncaught browser console error
+   - failed critical network request
+   - blank screen or blank canvas
+   - overlapping or clipped primary UI text
+   - missing expected button, modal, status, toast, or generated artifact link
+   - layout shift that changes the dimensions of fixed-format controls
+
+### Approval And Report Flows
+
+For approval/report screens, validate at minimum:
+
+- Primary action button is visible, enabled only when expected, and does not overflow.
+- Loading/background-job state is visible after submission.
+- Polling or refresh behavior reaches a terminal status.
+- Success state exposes the generated artifact or next action.
+- Error state is readable and does not trap the user.
+- Reopening the modal/page preserves the expected persisted status.
+
+### Output Location
+
+Prefer writing temporary screenshots and traces under a task-specific scratch folder, for example:
+
+```bash
+scratch/web-smoke/<feature-or-ticket>/
+```
+
+Mention the important screenshot paths in the final answer only when they are useful for review.
 
 ## Reference Files
 

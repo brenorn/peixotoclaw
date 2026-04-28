@@ -1,6 +1,6 @@
 ---
 name: reversa_frontend
-description: Engenharia Reversa de Frontends (Mapeamento de Fluxo e Cálculos)
+description: "Engenharia Reversa de Frontends: Mapeamento de fluxos de usuário e descoberta de lógicas de cálculo complexas."
 ---
 
 # Skill: Reversa Frontend 🦞

@@ -1,0 +1,26 @@
+{
+  "skill_name": "design-system-extractor",
+  "evals": [
+    {
+      "id": 0,
+      "name": "full-extraction-ferrari",
+      "prompt": "Analise a pasta de referência em D:\\OneDrive\\aiproj\\curso_imersao\\desing\\ref e gere o arquivo design-system.html completo, seguindo rigorosamente todas as seções definidas na skill design-system-extractor.",
+      "expected_output": "Um arquivo design-system.html contendo Hero clone, Tipografia, Cores, Componentes, Layout e Motion.",
+      "files": ["D:\\OneDrive\\aiproj\\curso_imersao\\desing\\ref\\index.html"]
+    },
+    {
+      "id": 1,
+      "name": "typography-check",
+      "prompt": "Focando apenas na tipografia do site Ferrari em D:\\OneDrive\\aiproj\\curso_imersao\\desing\\ref, gere o design-system.html com a seção de Tipografia completa, garantindo que o preview use as classes CSS originais e mostre as medidas de font-size/line-height.",
+      "expected_output": "Seção de tipografia com previews reais e especificações técnicas.",
+      "files": ["D:\\OneDrive\\aiproj\\curso_imersao\\desing\\ref\\css"]
+    },
+    {
+      "id": 2,
+      "name": "motion-and-states",
+      "prompt": "Extraia os componentes de UI e as animações de motion do site Ferrari em D:\\OneDrive\\aiproj\\curso_imersao\\desing\\ref. O arquivo design-system.html deve mostrar os botões em todos os seus estados (hover, active, etc.) e uma galeria de motion demonstrando as transições.",
+      "expected_output": "Demonstração de estados de componentes e galeria de animações.",
+      "files": ["D:\\OneDrive\\aiproj\\curso_imersao\\desing\\ref\\js"]
+    }
+  ]
+}

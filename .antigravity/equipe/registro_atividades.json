@@ -1,67 +1,20 @@
 {
-  "projeto": "PeixotoClaw Industrialization - Power Move",
-  "versao": "1.0",
-  "estado_global": "OPERACIONAL",
+  "sessao": "2026-04-27",
+  "objetivo": "Auditoria de Paridade entre Especificações (_peixotoclaw) e Implementação (src/domains/nr1/)",
+  "maestro": "SandecoMaestro",
   "atividades": [
     {
-      "id": "T-01",
-      "titulo": "Faxina Radical no AGENTS.md (The Purge)",
-      "responsavel": "Projetista",
-      "estado": "CONCLUIDO",
-      "pre_requisitos": [],
-      "descricao": "Reduzir o arquivo AGENTS.md de 6.000 linhas para < 500 linhas. Manter apenas regras de segurança de TIER 1 e gatilhos de ativação. [SKILL: software-architecture]"
+      "id": "AUDIT-00",
+      "descricao": "Auditoria de Banco de Dados (B1)",
+      "arquivo_spec": "2026_04_25_B1_BANCO_DADOS_NR01.md",
+      "estado": "PENDENTE"
     },
     {
-      "id": "T-02",
-      "titulo": "Migração de Regras para Skills Individuais",
-      "responsavel": "Executor",
-      "estado": "CONCLUIDO",
-      "pre_requisitos": ["T-01"],
-      "descricao": "Distribuir as regras de qualidade e formatação que estavam no monólito para os seus respectivos SKILL.md dentro do diretório .agents/skills/. [SKILL: skill-creator]"
-    },
-    {
-      "id": "T-03",
-      "titulo": "Unificação do Barramento Maestro na Raiz",
-      "responsavel": "Projetista",
-      "estado": "CONCLUIDO",
-      "pre_requisitos": [],
-      "descricao": "Alterar a Skill 'sandeco-maestro' para apontar SEMPRE para a raiz do projeto (.antigravity/equipe). Remover a proibição de uso da raiz. [SKILL: sandeco-maestro]"
-    },
-    {
-      "id": "T-04",
-      "titulo": "Implementação de Fallback de LLM",
-      "responsavel": "Backend",
-      "estado": "CONCLUIDO",
-      "pre_requisitos": [],
-      "descricao": "Aprimorar o ProviderFactory no src para tentar automaticamente um modelo secundário (ex: DeepSeek) caso o Gemini retorne 503 ou erro de cota."
-    },
-    {
-      "id": "T-05",
-      "titulo": "Auditoria de Segurança e Injeção",
-      "responsavel": "Auditor",
-      "estado": "CONCLUIDO",
-      "pre_requisitos": ["T-01", "T-03"],
-      "descricao": "Executar a skill 'skill-injection-auditor' em todas as skills migradas para garantir que a remoção das regras globais não fragilizou o sistema. [SKILL: skill-injection-auditor]"
-    },
-    {
-      "id": "T-06",
-      "titulo": "Sincronização Industrial (Nuclear Reset)",
-      "responsavel": "Comunicador",
-      "estado": "CONCLUIDO",
-      "pre_requisitos": ["T-05"],
-      "descricao": "Preparar o README.md final em Português/Inglês e aplicar higiene radical de Oceano Azul no diretório .agents/brain e na raiz do repositório."
+      "id": "AUDIT-01",
+      "descricao": "Auditoria de Data Intelligence (B2)",
+      "arquivo_spec": "2026_04_25_B2_DATA_INTELLIGENCE_NR01.md",
+      "estado": "PENDENTE"
     }
   ],
-  "logs": [
-    {
-      "data": "2026-04-16T21:32:15Z",
-      "agente": "Auditor",
-      "mensagem": "Auditado T-05: Análise heurística e semântica concluída. AGENTS.md e novas skills auditadas como SEGURAS. Integridade do sistema preservada."
-    },
-    {
-      "data": "2026-04-16T21:48:30Z",
-      "agente": "Maestro",
-      "mensagem": "Ato Final T-06: Faxina Oceano Azul concluída. Brain sanitizado, redundâncias removidas, .antigravity unificado e README atualizado para Monster Edition. Sistema estabilizado em modo OPERACIONAL."
-    }
-  ]
+  "bloqueios": []
 }

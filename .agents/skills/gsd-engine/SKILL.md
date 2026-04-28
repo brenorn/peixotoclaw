@@ -1,29 +1,31 @@
 ---
 name: gsd-engine
-description: 'Motor de orquestração universal PeixotoClaw baseado no framework Get-Shit-Done (GSD). Versão Python Pro.'
+description: Motor de execução incremental e anti-congelamento. Use quando lidar com arquivos grandes (>300 linhas), projetos legados complexos ou fases de planejamento extensas. Garante que cada descoberta seja registrada imediatamente, evitando perda de contexto.
 ---
 
-# Skill: GSD-Engine (Monster Edition) 🐉🦾
+# GSD-Engine (Get Shit Done) 🦾🚀
 
-Este é o sistema nervoso central do PeixotoClaw. Ele implementa a lógica de automação de alto nível para planejamento, execução e verificação de qualquer projeto (SaaS, Documentos, IA, etc).
+Esta habilidade força o assistente a trabalhar em modo **"Bit-Stream"**, garantindo que o progresso seja registrado em tempo real e o contexto nunca sature.
 
-## 🚀 Funcionalidades (Python First)
-1. **Governança Estrita**: Gestão de `ROADMAP.md` e `STATE.md` via `state.py`.
-2. **Segurança de Prompt**: Sanitização e proteção contra injeção via `security.py`.
-3. **Padrão Goal-Backward**: Metodologia de planejamento reverso para zero ambiguidade.
-4. **HMR (Hybrid Model Router)**: Mixagem de Claude e Gemini para economia e performance.
+## 🧱 Regra 1: Janela de Audição (Máx 300)
+- **Bloqueio de Leitura**: NUNCA tente ler mais de 300 linhas de um arquivo de uma só vez.
+- **Protocolo**: Leia 1-300 -> Faça um sumário no `discovery_stream.md` do módulo -> Leia 301-600.
+- **Objetivo**: Manter a "RAM" da IA limpa.
 
-## 🛠️ Comandos (Orquestração)
-- **Init**: Inicializa a estrutura `.planning/` em qualquer diretório.
-- **Plan**: Conduz o ciclo de planejamento de fases.
-- **Execute**: Gerencia a implementação atômica com commits automáticos.
-- **Validate**: Roda a auditoria Nyquist para garantir 100% de cobertura de testes.
+## 🍞 Regra 2: Trilha de Migalhas (Logs Imediatos)
+- **Registro em Tempo Real**: Toda vez que usar uma ferramenta de busca (`grep`, `ls`, `read`), escreva 1 frase sobre o que aprendeu no arquivo `_peixotoclaw/discovery_stream.md`.
+- **Exemplo**: *"Grep encontrou que a variável X é exportada pelo arquivo Y"*.
+- **Benefício**: Se a sessão expirar ou travar, o plano de ataque está salvo no disco.
 
-## 📁 Estrutura
-- `lib/`: Drivers fundamentais em Python 3.10+.
-- `agents/`: Prompts de sistema para subagentes especializados.
-- `workflows/`: Fluxos de trabalho sequenciais.
-- `templates/`: Modelos para PLAN, SUMMARY e STATE.
+## 🧩 Regra 3: Planejamento por Peças
+- **Não planeje o Monolito**: Quebre o planejamento em arquivos específicos por domínio.
+- **Exemplos**: `2026_04_21_DOMAIN_MODELS.md`, `2026_04_21_API_CONTRACTS.md`.
+- **Fluxo**: Complete uma peça, registre como "Concluída" e limpe o contexto antes de ir para a próxima.
+
+## ⚠️ Anti-Alucinação
+- Se você perceber que está repetindo as mesmas perguntas ou se sentindo "perdido", PARE.
+- Leia o `discovery_stream.md` local para se re-orientar.
+- Não prossiga se houver dúvida; peça clarificação para o usuário com base nas migalhas já coletadas.
 
 ---
-"Rigor é o segredo da autonomia AI."
+"O segredo do progresso é começar. O segredo de começar é quebrar suas tarefas complexas e esmagadoras em tarefas pequenas e gerenciáveis, e então começar pela primeira."

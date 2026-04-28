@@ -2,7 +2,7 @@
 
 > [!CAUTION]
 > **ATENÇÃO IA**: Este projeto utiliza uma arquitetura de Multi-Agentes complexa e reativa.
-> LEIA O ARQUIVO [**HANDOVER.md**](file:///d:/OneDrive/aiproj/PeixotoClaw/docs/management/HANDOVER.md) ANTES DE QUALQUER AÇÃO.
+> LEIA O ARQUIVO [**HANDOVER_MONSTER.md**](file:///d:/OneDrive/aiproj/PeixotoClaw/docs/HANDOVER_MONSTER.md) ANTES DE QUALQUER AÇÃO.
 
 ---
 
@@ -13,19 +13,19 @@ PeixotoClaw é uma plataforma engine para desenvolvimento automatizado de agente
 
 ## ⚡ O que você pode fazer com o PeixotoClaw?
 
-### 🤖 Orquestração Reativa (Novo!)
-O sistema agora é capaz de reconhecer intenções de linguagem natural para gerenciar o ciclo de vida de projetos satélites:
+### 🤖 Automação Industrial e Proatividade (Novo!)
+O sistema agora é capaz de reconhecer intenções e agir de forma autônoma:
+- **Diagnóstico Automático**: Ao ativar um projeto, o Maestro analisa a maturidade (`auto_pipeline.py`) e sugere o próximo passo (PRD -> Spec -> Código).
+- **Cofre de Habilidades (Skill Vault)**: Gerenciamento de memória ativa. Mantenha apenas o essencial no prompt e chame o resto da reserva quando necessário (`skill_manager.py`).
 - **Ativação de Contexto**: *"Vamos trabalhar com o projeto [Nome]"*
-- **Criação de Dossiê**: *"Vamos iniciar o projeto [Nome]"*
-- **Persistência de Artefatos**: Todo planejamento é espelhado automaticamente no dossiê local em `projects/`.
+- **Criação de Dossiê**: *"Vamos iniciar o projeto [Nome]"* em conformidade com a Engenharia de Software Pragmática.
 
-### 📂 Habilidades Integradas
-- **💻 Coder**: Criação, refatoração e arquitetura de código local.
-- **📄 Analista de Documentos**: Processamento de PDFs e extração de dados.
-- **🎓 Academic Writer (Nexus V5)**: Motor de mentoria e escrita acadêmica Q1.
-- **🦖 SandecoMaestro (Raiz)**: Orquestração de times de agentes (Architect, Builder, PM) agora unificada na raiz para sincronia total.
-- **⚡ Lean Engine**: Arquitetura AGENTS.md reduzida em 98% para foco total na execução.
-- **🛡️ Auto-Fallback**: Alternância automática de provedores (Gemini -> DeepSeek) para resiliência 24/7.
+### 📂 Habilidades Integradas (Highlights)
+- **💻 Coder**: Implementação técnica de elite seguindo a "Regra dos 500".
+- **🦖 SandecoMaestro (Raiz)**: Orquestração de esquadrão com 14 papéis especializados, unificada na raiz para sincronia total.
+- **🎬 YouTube Creative Suite**: Suite completa (Pesquisa, Roteiro, SEO) integrada em um único silo.
+- **🧠 Token Reduce (Sandeco Special)**: Compressão generativa de prompts para economia de tokens e latência.
+- **🛡️ Auto-Fallback**: Alternância automática de provedores para resiliência 24/7.
 
 ---
 
@@ -50,6 +50,12 @@ If you just cloned this repository, you **MUST** initialize the environment stru
 
 4. **Launch**:
    Run `peixotoclaw.bat` or `npm run ui:dev`.
+
+---
+
+## 🧠 AI Workflow
+
+O uso operacional de Codex, Claude, Antigravity, Ollama, skills locais e smoke visual esta documentado em [AI_WORKFLOW_PEIXOTOCLAW.md](file:///d:/OneDrive/aiproj/PeixotoClaw/docs/AI_WORKFLOW_PEIXOTOCLAW.md).
 
 ---
 

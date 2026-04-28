@@ -1,6 +1,6 @@
 ---
 name: brainstorming
-description: Partner for exploring ideas, defining scopes, and making architectural decisions.
+description: Parceiro para exploração de ideias, definição de escopo e decisões arquiteturais de alto nível.
 ---
 
 # Brainstorming

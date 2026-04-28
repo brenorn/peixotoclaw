@@ -128,15 +128,20 @@ Your responses must be:
                              activeSkillNames.has('documentation-scribe') ||
                              activeSkillNames.has('escriba');
 
-        if (forceLowTier) {
-            this.provider.setModel('gemini-2.0-flash');
-            console.log(`[AgentController] Smart Routing: Selected FREE/FAST tier.`);
-        } else if (isHighTierTask) {
-            this.provider.setModel('gemini-2.0-pro-exp-02-05');
-            console.log(`[AgentController] Smart Routing: Selected PRO/HIGH tier.`);
-        } else {
-            // Default to flash for casual chat
-            this.provider.setModel('gemini-2.0-flash');
+        const providerKey = ProviderFactory.getProviderName().toLowerCase();
+        if (providerKey === 'gemini') {
+            if (forceLowTier) {
+                this.provider.setModel('gemini-2.0-flash');
+                console.log(`[AgentController] Smart Routing: Selected FREE/FAST tier.`);
+            } else if (isHighTierTask) {
+                this.provider.setModel('gemini-2.0-pro-exp-02-05');
+                console.log(`[AgentController] Smart Routing: Selected PRO/HIGH tier.`);
+            } else {
+                // Default to flash for casual chat
+                this.provider.setModel('gemini-2.0-flash');
+            }
+        } else if (providerKey === 'claude') {
+            console.log(`[AgentController] Smart Routing: Claude provider keeps configured executor/advisor models.`);
         }
 
         // 7. Run Agent Loop

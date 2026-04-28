@@ -205,7 +205,24 @@ class ProjectLifecycleManager:
         
         self.show_skills_inventory()
         
-        print(f"\n[READY] Projeto {project_name} ativo e pronto para o Antigravity.")
+        # Rodar Diagnóstico Automático (Autopilot)
+        from auto_pipeline import run_diagnostic
+        run_diagnostic(project_name, str(dossier_path))
+        
+        # Consultar Sabedoria Transversal (Global Brain)
+        try:
+            from wisdom_extractor import get_relevant_wisdom
+            wisdom = get_relevant_wisdom()
+            if "insights" in wisdom and len(json.loads(wisdom)["insights"]) > 0:
+                print("\n🧠 [GLOBAL BRAIN: Lições Aprendidas]")
+                # Mostrar apenas os 3 últimos insights para não poluir
+                insights = json.loads(wisdom)["insights"][-3:]
+                for ins in insights:
+                    print(f"  💡 {ins['content']} (Fonte: {ins['project']})")
+        except:
+            pass
+        
+        print(f"\n[READY] Projeto {project_name} ativo e sob vigilância do Maestro.")
         return True
 
     def show_skills_inventory(self):

@@ -1,6 +1,6 @@
 ---
 name: autoresearch-diagrams
-description: Self-improving diagram prompt optimization using the Karpathy autoresearch pattern. Generates batches of diagrams, evaluates via Claude vision, mutates the prompt, keeps winners. Includes a live web dashboard.
+description: Otimização auto-melhorável de diagramas usando o padrão Karpathy. Gera, avalia e refina prompts de diagramas Mermaid.
 allowed-tools: Read, Bash, Glob, Grep
 ---
 
